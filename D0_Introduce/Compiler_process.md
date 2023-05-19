@@ -1,7 +1,5 @@
-Prerequisites
-
-Before you continue, ensure you meet the following requirements:
-
-* You have installed the latest version of Ruby.
-* You are using a Linux or Mac OS machine. Windows is not currently supported.
-* You have a basic understanding of graph theory.
+Quá trình biên dịch bao gồm 4 giai đoạn:
+- Pre-processor(Giai đoạn tiền xử lý): Xóa bỏ các dòng comments, xử lý các chỉ thị tiền xử lý có bắt đầu bằng kí hiệu "#". Như #include (thay thế mã chương trình cần thiết của một tệp tiêu để vào mã nguồn cần dịch), #define (thay thế bằng giá trị cụ thể vào các biến được gọi)
+- Compiler(Giai đoạn dịch sang ngôn ngữ Assembly):
+- Assembler(Giai đoạn dịch sang ngôn ngữ máy):
+- Linker(Giải đoạn liên kết):
