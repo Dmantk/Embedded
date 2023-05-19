@@ -9,4 +9,4 @@
 - **_Assembler (Giai đoạn dịch sang ngôn ngữ máy):_** Biên dịch ngôn ngữ Assembly sang ngôn ngữ máy (0 và 1). Và tạo ra tệp tin Object `.o`.
   -  Dùng lệnh `gcc -c filename.c -o filename.o` để tạo ra file ".o" và dùng lệnh `objdump -d -Mintel filename.o` để xem code.
 - **_Linker (Giải đoạn liên kết):_** Trong giai đoạn này mã máy của một chương trình `.o` dịch từ nhiều nguồn (file .c hoặc file thư viện .lib) được liên kết lại với nhau để tạo thành chương trình duy nhất
-  -  File sau khi được gộp lại thì sẽ có đuôi mở rộng Executable ".exe", còn trên Linux và MacOs thì có thể có đuôi theo chỉ định hoặc không có đuôi mở rộng.
+  -  File sau khi được gộp lại thì sẽ có đuôi mở rộng Executable ".exe", còn trên Linux và MacOs thì có thể có đuôi theo chỉ định hoặc không có đuôi mở rộng. 
