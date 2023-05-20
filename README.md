@@ -11,7 +11,7 @@
 - **_Linker (Giải đoạn liên kết):_** Trong giai đoạn này mã máy của một chương trình `.o` dịch từ nhiều nguồn (file .c hoặc file thư viện .lib) được liên kết lại với nhau để tạo thành chương trình duy nhất
 	- File sau khi được gộp lại thì sẽ có đuôi mở rộng Executable `.exe`, còn trên Linux và MacOs thì có thể có đuối theo chỉ định hoặc không có đuôi mở rộng.
 
-- Để chạy file code C trên `terminal linux` dùng lệnh `gcc -o filename filename.c` đẻ tạo ra tệp thực thi, sau đó dùng lệnh `./filename` để chạy tệp thực thi đó.
+- Để chạy file code C trên `terminal` dùng lệnh `gcc -o filename filename.c` đẻ tạo ra tệp thực thi, sau đó dùng lệnh `./filename` để chạy tệp thực thi đó.
 
 
 ## ▶**Phân vùng bộ nhớ trên RAM, cấp phát bộ nhớ động**
@@ -55,3 +55,21 @@
 		```C 
 		int *A = (int *)malloc(18446744073709551615); 
 		```
+	### Các cách sử dụng malloc, calloc, realloc, free:
+	- ***Malloc:*** Cấp phát bộ nhớ động chưa có giá trị khởi tạo cho mỗi phần tử, trả về con trỏ NULL khi cấp phát thành công
+	```C 
+	void* malloc(size_t size);
+	```
+	- ***Calloc:*** Cấp phát bộ nhớ động có giá trị khởi tạo ban đầu của mỗi phần tử đều là 0, trả về con trỏ NULL khi cấp phát thành công
+	```C
+	void* calloc(size_t num, size_t size);
+	```
+	- ***Realloc:*** Thay đổi kích thước bộ nhớ của bộ nhớ đã được cấp phát trước đó của Malloc và Calloc, trả về con trỏ NULL khi thay đổi thành công
+	```C
+	void* realloc(void* ptr, size_t size);
+	```
+	- ***Free:*** Giải phóng bộ nhớ đã được cấp phát bằng Malloc, Calloc, Realloc sau khi sử dụng xong, không có trả về
+	```C
+	void free(void* ptr);
+	```
+	
