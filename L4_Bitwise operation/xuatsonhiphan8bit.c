@@ -2,7 +2,7 @@
 #include <stdint.h>
 
 void readByte(uint8_t byte){
-	uint8_t temp = 0b10000000;
+	uint8_t temp = 0b10000000; // 128 đối với kiểu int
 	printf("0b");
 	for(int i = 0; i<8; i++){
 	int kq = byte & temp;
