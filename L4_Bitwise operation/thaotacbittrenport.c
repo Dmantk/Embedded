@@ -35,7 +35,7 @@ typedef enum{
 
 void digitalWrite(s_pins pin, s_status status){
 	if(status == 1)
-		PORTA = PORTA | (1 << pin);
+		PORTA = PORTA | (1 << pin);   // int 1 tướng đương với 0b00000001
 	else
 		PORTA = PORTA & ~(1 << pin);
 }
