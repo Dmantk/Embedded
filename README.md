@@ -74,23 +74,150 @@
 	```
 	
 ## ▶Các biến trong C:
+- Biến số nguyên (Integer Variables): Lưu trữ giá trị số nguyên không có phần thập phân.
+	`int age = 25;`
+- Biến số thực (Floating-point Variables): Lưu trữ giá trị số thực có phần thập phân.
+	`float pi = 3.14;`
+- Biến dấu chấm động (Floating-point Variables): Lưu trữ giá trị số thực có độ chính xác cao hơn float.
+    `double pi = 3.14159;`
+- Biến dài (Long Variables): Lưu trữ giá trị số nguyên có phạm vi mở rộng so với int.
+    `long population = 1000000;`
+- Biến ngắn (Short Variables): Lưu trữ giá trị số nguyên có phạm vi nhỏ hơn so với int.
+    `short temperature = -10;`
+- Biến ký tự (Character Variables): Lưu trữ một ký tự.
+	`char grade = 'A';`
+- Biến chuỗi ký tự (String Variables): Lưu trữ một chuỗi các ký tự.
+	`char name[] = "John";`
+- Biến boolean (Boolean Variables): Lưu trữ giá trị đúng (1) hoặc sai (0).
+	`int isTrue = 1;`
+- Con trỏ (Pointer Variables): Lưu trữ địa chỉ của một biến hoặc vùng nhớ.
+	`int* ptr = NULL;`
+- Biến mảng (Array Variables): Lưu trữ nhiều giá trị trong một biến duy nhất.
+	`int numbers[] = {1, 2, 3, 4, 5};`
+- Biến kích thước (Size Variables): Lưu trữ giá trị kích thước của các đối tượng trong bộ nhớ.
+    ```size_t length = 10;```
+- Biến không đổi (Constant Variables): Lưu trữ giá trị không thay đổi trong suốt thời gian chương trình chạy.
+    ```const int MAX_VALUE = 100;```
+- Biến từ khóa (Keyword Variables): Lưu trữ giá trị trùng với các từ khóa được định nghĩa trong ngôn ngữ C.
+    ```int int = 5;```
+- Biến từ xa (Extern Variables):Khai báo một biến đã được định nghĩa trong một tệp tin khác.
+    ```extern int globalVar;```
+- Biến có phạm vi tĩnh (Static Scope Variables): Lưu trữ giá trị trong suốt vòng đời của biến và chỉ có thể truy cập trong phạm vi của một hàm hoặc tệp tin.
+    ```static int count = 0;```
+- Biến hệ thống (System Variables): Lưu trữ thông tin đối với chương trình chạy, như số lượng tham số dòng lệnh và danh sách tham số.
+    ```int argc; char** argv;```
+- Biến môi trường (Environment Variables): Lưu trữ thông tin môi trường hệ thống như đường dẫn, biến cấu hình, v.v.
+    `char* path = getenv("PATH");`
+- Biến vô kiểu (Void Variables): Lưu trữ một địa chỉ bất kỳ và có thể chuyển đổi thành bất kỳ kiểu con trỏ nào.
+	`void* ptr;`
+- Biến hằng số từ xa (Extern Constant Variables): Khai báo một hằng số đã được định nghĩa trong một tệp tin khác.
+    `extern const int MAX_VALUE;`
+- Biến gần (Auto Variables): Được sử dụng để chỉ ra rằng một biến cục bộ tự động sẽ được tạo ra.
+ 	`auto int x = 5;`
+- Biến trình tự (Sequence Variables): Chỉ định rằng một biến thường được truy cập nhanh chóng và thường xuyên.
+    `register int counter = 0;`
+- Biến quyền (Qualifier Variables): Đánh dấu biến có thể thay đổi mà không cần thông báo và không nên tối ưu hóa.
+   	`volatile int status;`
+- Biến tĩnh (Static Variables): Lưu trữ giá trị trong suốt vòng đời của chương trình và giá trị được duy trì ngay cả khi hàm hoặc khối lệnh kết thúc.
+	```static int count = 0;```
+- Biến tĩnh cục bộ (Local Static Variables): Lưu trữ giá trị trong suốt vòng đời của biến, nhưng chỉ có thể truy cập trong phạm vi của một hàm.
+    ```C
+    void function() {
+        static int count = 0;
+        // ...
+    }
+    ```
+- Biến toàn cục (Global Variables): Khai báo ngoài hàm. Lưu trữ giá trị có thể truy cập từ bất kỳ đâu trong chương trình.
+	```int globalVar = 10;```
+- Biến cục bộ (Local Variables): Khai báo trong hàm. Lưu trữ giá trị chỉ có thể truy cập trong phạm vi của một hàm hoặc khối lệnh.
+	```C
+	void function() {
+    	int localVar = 5;
+   		// ...
+	} 
+	```
+- Biến tên (Label Variables): Đánh dấu một vị trí trong mã chương trình để nhảy đến khi sử dụng lệnh goto.
+    ```C
+    goto label;
+    // ...
+    label:
+        // ...
+    ```
+- Biến tham chiếu (Reference Variables): Lưu trữ một tham chiếu đến một biến đã tồn tại, cho phép thay đổi giá trị của biến qua tham chiếu.
+    ```C
+    int x = 10;
+    int& ref = x;
+    ```
+- Biến hàm (Function Variables): Lưu trữ địa chỉ của một hàm và cho phép gọi hàm thông qua con trỏ.
+    ```C
+    int (*func_ptr)(int, int);
+    int sum(int a, int b) {
+        return a + b;
+    }
+    func_ptr = sum;
+    ```
+- Biến cấu trúc (Structure Variables): Lưu trữ các thành phần có liên quan vào một biến.
+    ```
+    struct Person {
+        char name[20];
+        int age;
+    };
+    struct Person p1;
+	```
+- Biến cấu trúc mở rộng (Extended Structure Variables): Lưu trữ các thành phần có liên quan vào một biến và mở rộng chức năng của cấu trúc.
+    ```C
+    struct Person {
+        char name[20];
+        int age;
+    } p1;
+    ```
+- Biến liên kết (Union Variables): Lưu trữ giá trị của một thành phần trong một thời điểm.
+    ```
+    union Data {
+        int x;
+        float y;
+    };
+    union Data data;
+    ```
+- Biến liệt kê (Enumeration Variables): Lưu trữ một trong các giá trị được xác định trước từ một tập hợp các giá trị có tên.
+    ```
+    enum Color {
+        RED,
+        GREEN,
+        BLUE
+    };
+	enum Color c = BLUE;
+- Biến kiểu định danh (Typedef Variables): Tạo ra một tên mới cho một kiểu dữ liệu đã tồn tại để sử dụng dễ dàng hơn.
+    ```C
+    typedef int Integer;
+    Integer number = 42;
+	```
+- Biến kiểu dữ liệu do người dùng định nghĩa (User-defined Data Type Variables): Định nghĩa và sử dụng kiểu dữ liệu tùy chỉnh trong ngôn ngữ C.
+	```C
+	typedef struct {
+    	char name[20];
+    	int age;
+	} Person;
+	Person p1; 
+	```
+
 
 ## ▶Macro, Inline, Function:
-- Macro: Được xử lý bởi preprocessor
+- **_Macro:_** Được xử lý bởi preprocessor
     - Thay thế đoạn code được khai báo macro vào bất cứ chỗ nào xuất hiện macro đó
     - VD: Preprocessor khi gặp bất kỳ lời gọi SUM(first+last) nào thì thay ngay bằng
     ```C
     #define SUM(a,b)     (a+b)
     ```
-- Inline: Được xử lý bởi compiler
+- **_Inline:_** Được xử lý bởi compiler
     - Được khai báo với từ khóa inline
     - Khi compiler thấy bất kỳ chỗ nào xuất hiện inline function, nó sẽ thay thế chỗ đó bởi định nghĩa của hàm đã được compile tương ứng. –> Phần được thay thế không phải code mà là đoạn code đã được compile
-- Function: Khi thấy hàm được gọi, compiler sẽ phải lưu con trỏ chương trình PC hiện tại vào stack; chuyển PC tới hàm được gọi, thực hiện hàm đó xong và lấy kết quả trả về; sau đó quay lại vị trí ban đầu trong stack trước khi gọi hàm và tiếp tục thực hiện chương trình.
+- **_Function:_** Khi thấy hàm được gọi, compiler sẽ phải lưu con trỏ chương trình PC hiện tại vào stack; chuyển PC tới hàm được gọi, thực hiện hàm đó xong và lấy kết quả trả về; sau đó quay lại vị trí ban đầu trong stack trước khi gọi hàm và tiếp tục thực hiện chương trình.
     - Như có thể thấy, các này khiến chương trình tốn thời gian hơn là chỉ cần thay thế đoạn code đã được compile (cách của inline function)
 ### So sánh:
-    - Macro đơn giản là chỉ thay thế đoạn code macro vào chỗ được gọi trước khi được biên dịch
-    - Inline thay thế đoạn mã code đã được biên dịch vào chỗ được gọi
-    - Hàm bình thường phải tạo một function call, lưu địa chỉ trước khi gọi hàm vào stack sau đó mới thực hiện hàm và sau cùng là quay trở về địa chỉ trên stack trước khi gọi hàm và thực hiện tiếp chương trình
-    - Macro khiến code trở nên dài hơn rất nhiều so với bình thường nhưng thời gian chạy nhanh.
-    - Hàm inline cũng khiến code dài hơn, tuy nhiên nó làm giảm thời gian chạy chương trình
-    - Hàm bình thường sẽ phải gọi function call nên tốn thời gian hơn inline function nhưng code ngắn gọn hơn.
+- Macro đơn giản là chỉ thay thế đoạn code macro vào chỗ được gọi trước khi được biên dịch
+- Inline thay thế đoạn mã code đã được biên dịch vào chỗ được gọi
+- Hàm bình thường phải tạo một function call, lưu địa chỉ trước khi gọi hàm vào stack sau đó mới thực hiện hàm và sau cùng là quay trở về địa chỉ trên stack trước khi gọi hàm và thực hiện tiếp chương trình
+- Macro khiến code trở nên dài hơn rất nhiều so với bình thường nhưng thời gian chạy nhanh.
+- Hàm inline cũng khiến code dài hơn, tuy nhiên nó làm giảm thời gian chạy chương trình
+- Hàm bình thường sẽ phải gọi function call nên tốn thời gian hơn inline function nhưng code ngắn gọn hơn.
