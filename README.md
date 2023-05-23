@@ -73,9 +73,9 @@
 	void free(void* ptr);
 	```
 	
-## ▶**Các biến trong C:
+## ▶Các biến trong C:
 
-## ▶**Macro, Inline, Function:
+## ▶Macro, Inline, Function:
 - Macro: Được xử lý bởi preprocessor
     - Thay thế đoạn code được khai báo macro vào bất cứ chỗ nào xuất hiện macro đó
     - VD: Preprocessor khi gặp bất kỳ lời gọi SUM(first+last) nào thì thay ngay bằng
@@ -87,7 +87,7 @@
     - Khi compiler thấy bất kỳ chỗ nào xuất hiện inline function, nó sẽ thay thế chỗ đó bởi định nghĩa của hàm đã được compile tương ứng. –> Phần được thay thế không phải code mà là đoạn code đã được compile
 - Function: Khi thấy hàm được gọi, compiler sẽ phải lưu con trỏ chương trình PC hiện tại vào stack; chuyển PC tới hàm được gọi, thực hiện hàm đó xong và lấy kết quả trả về; sau đó quay lại vị trí ban đầu trong stack trước khi gọi hàm và tiếp tục thực hiện chương trình.
     - Như có thể thấy, các này khiến chương trình tốn thời gian hơn là chỉ cần thay thế đoạn code đã được compile (cách của inline function)
-	###***So sánh***
+### So sánh:
     - Macro đơn giản là chỉ thay thế đoạn code macro vào chỗ được gọi trước khi được biên dịch
     - Inline thay thế đoạn mã code đã được biên dịch vào chỗ được gọi
     - Hàm bình thường phải tạo một function call, lưu địa chỉ trước khi gọi hàm vào stack sau đó mới thực hiện hàm và sau cùng là quay trở về địa chỉ trên stack trước khi gọi hàm và thực hiện tiếp chương trình
