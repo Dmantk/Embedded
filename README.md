@@ -218,10 +218,58 @@
     - Khi compiler thấy bất kỳ chỗ nào xuất hiện inline function, nó sẽ thay thế chỗ đó bởi định nghĩa của hàm đã được compile tương ứng. –> Phần được thay thế không phải code mà là đoạn code đã được compile
 - **_Function:_** Khi thấy hàm được gọi, compiler sẽ phải lưu con trỏ chương trình PC hiện tại vào stack; chuyển PC tới hàm được gọi, thực hiện hàm đó xong và lấy kết quả trả về; sau đó quay lại vị trí ban đầu trong stack trước khi gọi hàm và tiếp tục thực hiện chương trình.
     - Như có thể thấy, các này khiến chương trình tốn thời gian hơn là chỉ cần thay thế đoạn code đã được compile (cách của inline function)
-### So sánh:
+### So sánh Macro, Inline, Function:
 - Macro đơn giản là chỉ thay thế đoạn code macro vào chỗ được gọi trước khi được biên dịch
 - Inline thay thế đoạn mã code đã được biên dịch vào chỗ được gọi
 - Hàm bình thường phải tạo một function call, lưu địa chỉ trước khi gọi hàm vào stack sau đó mới thực hiện hàm và sau cùng là quay trở về địa chỉ trên stack trước khi gọi hàm và thực hiện tiếp chương trình
 - Macro khiến code trở nên dài hơn rất nhiều so với bình thường nhưng thời gian chạy nhanh.
 - Hàm inline cũng khiến code dài hơn, tuy nhiên nó làm giảm thời gian chạy chương trình
 - Hàm bình thường sẽ phải gọi function call nên tốn thời gian hơn inline function nhưng code ngắn gọn hơn.
+
+
+
+## ▶BitWise Operarion (Thao tác bit):
+- AND (Biểu thức AND): Ký hiệu: `&`,thực hiện phép AND bit trên từng cặp bit của hai số.
+    ```c
+    unsigned int a = 5;  // 0101
+	unsigned int b = 3;  // 0011
+	unsigned int result = a & b;  // 0001
+	```
+- OR (Biểu thức OR): Ký hiệu: `|`, thực hiện phép OR bit trên từng cặp bit của hai số.
+    ```c
+    unsigned int a = 5;  // 0101
+	unsigned int b = 3;  // 0011
+	unsigned int result = a | b;  // 0111
+    ```
+- XOR (Biểu thức XOR): Ký hiệu: `^`, thực hiện phép XOR bit trên từng cặp bit của hai số.
+    ```c
+    unsigned int a = 5;  // 0101
+	unsigned int b = 3;  // 0011
+	unsigned int result = a ^ b;  // 0110
+    ```
+- NOT (Biểu thức NOT): Ký hiệu: `~`, thực hiện phép NOT bit, đảo ngược tất cả các bit của số.
+    ```c
+    unsigned int a = 5;  // 0101
+	unsigned int result = ~a;  // 1010 (đảo ngược các bit)
+    ```
+- Left Shift (Dịch trái): Ký hiệu: `<<`, dịch trái các bit của số `a` đi `b` vị trí.
+    ```c
+    unsigned int a = 5;  // 0101
+	unsigned int result = a << 2;  // 010100 (dịch trái 2 vị trí)
+    ```
+- Right Shift (Dịch phải): Ký hiệu: `>>`, dịch phải các bit của số `a` đi `b` vị trí.
+    ```c
+    unsigned int a = 5;  // 0101
+	unsigned int result = a >> 2;  // 0001 (dịch phải 2 vị trí)
+    ```
+- Left Shift và Assign (Dịch trái và gán): Ký hiệu: `<<=`, dịch trái các bit của số `a` đi `b` vị trí và gán lại giá trị cho `a`.
+    ```a <<= b;```
+- Right Shift và Assign (Dịch phải và gán): Ký hiệu: `>>=`, dịch phải các bit của số `a` đi `b` vị trí và gán lại giá trị cho `a`.
+    ```a >>= b;```
+- Bitwise AND và Assign (AND bit và gán): Ký hiệu: `&=`, thực hiện phép AND bit trên từng cặp bit của hai số và gán lại giá trị cho `a`.
+    ```a &= b;```
+- Bitwise OR và Assign (OR bit và gán): Ký hiệu: `|=`, thực hiện phép OR bit trên từng cặp bit của hai số và gán lại giá trị cho `a`.
+    ```a |= b;```
+- Bitwise XOR và Assign (XOR bit và gán): Ký hiệu: `^=`, thực hiện phép XOR bit trên từng cặp bit của hai số và gán lại giá trị cho `a`.
+	```a ^= b;```
+
