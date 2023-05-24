@@ -249,35 +249,57 @@
 <details>
   <summary><h2>▶BitWise Operarion (Thao tác bit)</h2></summary>
 
-- AND (Biểu thức AND): Ký hiệu: `&`,thực hiện phép AND bit trên từng cặp bit của hai số.
+- AND (Biểu thức AND): Ký hiệu: `&`.
+	| A | B | A & B |
+  	|---|---|:---:|
+  	|0|0|  0|
+  	|0|1|  0|
+  	|1|0|  0|
+  	|1|1|  1|
     ```c
     unsigned int a = 5;  // 0101
 	unsigned int b = 3;  // 0011
 	unsigned int result = a & b;  // 0001
 	```
-- OR (Biểu thức OR): Ký hiệu: `|`, thực hiện phép OR bit trên từng cặp bit của hai số.
+- OR (Biểu thức OR): Ký hiệu: `|`.
+	| A | B | A \| B |
+  	|---|---|:---:|
+  	|0|0|  0|
+  	|0|1|  1|
+  	|1|0|  1|
+  	|1|1|  1|
     ```c
     unsigned int a = 5;  // 0101
 	unsigned int b = 3;  // 0011
 	unsigned int result = a | b;  // 0111
     ```
-- XOR (Biểu thức XOR): Ký hiệu: `^`, thực hiện phép XOR bit trên từng cặp bit của hai số.
+- XOR (Biểu thức XOR): Ký hiệu: `^`.
+	| A | B | A ^ B |
+  	|---|---|:---:|
+  	|0|0|  0|
+  	|0|1|  1|
+  	|1|0|  1|
+  	|1|1|  0|
     ```c
     unsigned int a = 5;  // 0101
 	unsigned int b = 3;  // 0011
 	unsigned int result = a ^ b;  // 0110
     ```
 - NOT (Biểu thức NOT): Ký hiệu: `~`, thực hiện phép NOT bit, đảo ngược tất cả các bit của số.
+	| A | NOT A |
+  	|--|:---:|
+  	|0|  1|
+  	|1|  0|
     ```c
     unsigned int a = 5;  // 0101
 	unsigned int result = ~a;  // 1010 (đảo ngược các bit)
     ```
-- Left Shift (Dịch trái): Ký hiệu: `<<`, dịch trái các bit của số `a` đi `b` vị trí.
+- Left Shift (Dịch trái): Ký hiệu: `<<`.
     ```c
     unsigned int a = 5;  // 0101
 	unsigned int result = a << 2;  // 010100 (dịch trái 2 vị trí)
     ```
-- Right Shift (Dịch phải): Ký hiệu: `>>`, dịch phải các bit của số `a` đi `b` vị trí.
+- Right Shift (Dịch phải): Ký hiệu: `>>`.
     ```c
     unsigned int a = 5;  // 0101
 	unsigned int result = a >> 2;  // 0001 (dịch phải 2 vị trí)
