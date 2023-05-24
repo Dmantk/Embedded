@@ -13,8 +13,17 @@ struct typeDate{
 	uint64_t arr8[2];	// 16bytes (2 lần quét 8bytes, 6bytes đệm không đủ cho 1 lần quét 8bytes nên không đẩy lên, tổng là 16bytes không cần byte đệm)
 };
 
+
+typedef union{
+	uint16_t test1[6]; //12 bytes
+	uint64_t test2[3]; //24 bytes
+	uint32_t test3[8]; //32 bytes 
+}typeData;
+
+
 int main(){
-	printf("%lu\n", sizeof(struct typeDate));
+	
+	printf("size of struct: %lu bytes\n", sizeof(struct typeDate)); // 88 bytes
+	printf("size of union: %lu bytes\n", sizeof(typeData)); // 32 bytes
 	return 0;
 }
-
