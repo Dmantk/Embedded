@@ -1,5 +1,8 @@
-## ▶**Quá trình biên dịch bao gồm 4 giai đoạn:**
-
+<details>
+  <summary><h2>▶Quá trình biên dịch</h2></summary>
+	
+<h3>Quá trình biên dịch bao gồm 4 giai đoạn:</h3>
+	
 - **_Pre-processor (Giai đoạn tiền xử lý):_** Xóa bỏ các dòng comments, xử lý các chỉ thị tiền xử lý có bắt đầu bằng kí hiệu `#`. Như `#include` (thay thế mã chương trình của một tệp tiêu để vào mã nguồn cần dịch), `#define` (thay thế bằng giá trị cụ thể vào các biến được gọi).
 	-  Sau khi qua quá trình tiền xử lý thì file code lúc này sẽ có dạng `.i`.
 	-  Dùng lệnh `gcc -E filename.c -o filename.i` hoặc `gcc -E filename.c` để xem code sau khi qua quá trình preprocessor.
@@ -12,9 +15,15 @@
 	- File sau khi được gộp lại thì sẽ có đuôi mở rộng Executable `.exe`, còn trên Linux và MacOs thì có thể có đuối theo chỉ định hoặc không có đuôi mở rộng.
 
 - Để chạy file code C trên `terminal` dùng lệnh `gcc -o filename filename.c` đẻ tạo ra tệp thực thi, sau đó dùng lệnh `./filename` để chạy tệp thực thi đó.
+	
+</details>
 
 
-## ▶**Phân vùng bộ nhớ trên RAM, cấp phát bộ nhớ động**
+
+<details>
+  <summary><h2>▶Phân vùng bộ nhớ trên RAM, cấp phát bộ nhớ động</h2></summary>
+	
+<h3>Phân vùng bộ nhớ trên RAM, cấp phát bộ nhớ động</h3>
 
 - ***Text:*** Quyền truy cập chỉ có thể Read
 	- Chứa khai báo các hằng số(.rodata)
@@ -72,8 +81,13 @@
 	```C
 	void free(void* ptr);
 	```
+</details>
+
+
+
+<details>
+  <summary><h2>▶Các biến trong C</h2></summary>
 	
-## ▶Các biến trong C:
 - Biến số nguyên (Integer Variables): Lưu trữ giá trị số nguyên không có phần thập phân.
 	`int age = 25;`
 - Biến số thực (Floating-point Variables): Lưu trữ giá trị số thực có phần thập phân.
@@ -203,10 +217,13 @@
 ### Khác nhau của static cục bộ và static toàn cục:
 - Biến static cục bộ: Khi 1 biến cục bộ được khai báo với từ khóa static. Biến sẽ chỉ được khởi tạo 1 lần duy nhất và tồn tại suốt thời gian chạy chương trình. Giá trị của nó không bị mất đi ngay cả khi kết thúc hàm. Tuy nhiên khác với biến toàn cục có thể gọi trong tất cả mọi nơi trong chương trình, thì biến cục bộ static chỉ có thể được gọi trong nội bộ hàm khởi tạo ra nó. Mỗi lần hàm được gọi, giá trị của biến chính bằng giá trị tại lần gần nhất hàm được gọi.
 - Biến static toàn cục: Biến toàn cục static sẽ chỉ có thể được truy cập và sử dụng trong File khai báo nó, các File khác không có cách nào truy cập được. 
+</details>
 
 
 
-## ▶Macro, Inline, Function:
+<details>
+  <summary><h2>▶Macro, Inline, Function</h2></summary>
+
 - **_Macro:_** Được xử lý bởi preprocessor
     - Thay thế đoạn code được khai báo macro vào bất cứ chỗ nào xuất hiện macro đó
     - VD: Preprocessor khi gặp bất kỳ lời gọi SUM(first+last) nào thì thay ngay bằng
@@ -225,10 +242,13 @@
 - Macro khiến code trở nên dài hơn rất nhiều so với bình thường nhưng thời gian chạy nhanh.
 - Hàm inline cũng khiến code dài hơn, tuy nhiên nó làm giảm thời gian chạy chương trình
 - Hàm bình thường sẽ phải gọi function call nên tốn thời gian hơn inline function nhưng code ngắn gọn hơn.
+</details>
 
 
 
-## ▶BitWise Operarion (Thao tác bit):
+<details>
+  <summary><h2>▶BitWise Operarion (Thao tác bit)</h2></summary>
+
 - AND (Biểu thức AND): Ký hiệu: `&`,thực hiện phép AND bit trên từng cặp bit của hai số.
     ```c
     unsigned int a = 5;  // 0101
@@ -272,4 +292,10 @@
     ```a |= b;```
 - Bitwise XOR và Assign (XOR bit và gán): Ký hiệu: `^=`, thực hiện phép XOR bit trên từng cặp bit của hai số và gán lại giá trị cho `a`.
 	```a ^= b;```
+</details>
 
+
+
+<details>
+  <summary><h2>▶...</h2></summary>
+</details>
