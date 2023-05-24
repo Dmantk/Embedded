@@ -286,7 +286,7 @@
 	unsigned int result = a ^ b;  // 0110
     ```
 - NOT (Biểu thức NOT): Ký hiệu: `~`, thực hiện phép NOT bit, đảo ngược tất cả các bit của số.
-	| A | NOT A |
+	| A | ~ A |
   	|--|:---:|
   	|0|  1|
   	|1|  0|
