@@ -332,19 +332,19 @@
 <details>
   <summary><h2>▶Pointer</h2></summary>
 	
-- Bộ nhớ RAM chứa rất nhiều ô nhớ, mỗi ô nhớ có kích thước 1 byte. Mỗi ô nhớ có địa chỉ duy nhất và địa chỉ này được đánh số từ 0 trở đi. Nếu CPU 32 bit thì có 2^32 địa chỉ có thể đánh cho các ô nhớ trong RAM.
+- Bộ nhớ RAM chứa rất nhiều ô nhớ, `mỗi ô nhớ có kích thước 1 byte`. Mỗi ô nhớ có địa chỉ duy nhất và địa chỉ này được đánh số từ 0 trở đi. Nếu `CPU 32bit` thì có `2^32 địa chỉ` có thể đánh cho các ô nhớ trong RAM.
 	| Ô nhớ | 0 | 1 | ... | 2^32-2 | 2^32-1 |
   	|:-------:|:--------:|:--------:|---|:----------:|:--------:|
   	| Địa chỉ |0x00000000|0x00000001|...|0x0=fffffffe|0xffffffff|
-	| Giá trị |     0    |     5    |...|     's'    |     0    |
-	|   Biến  |     0    |     x    |...|    char    |     0    |
-- Khi khai báo biến, trình biên dịch dành riêng một vùng nhớ với địa chỉ duy nhất để lưu biến. Trình biên dịch có nhiệm vụ liên kết địa chỉ ô nhớ đó với tên biến. Khi gọi tên biến, nó sẽ truy xuất tự động đến ô nhớ đã liên kết với tên biến để lấy dữ liệu. Các bạn phải luôn phân biệt giữa địa chỉ bộ nhớ và dữ liệu được lưu trong đó.
-- Địa chỉ của biến bản chất cũng là một con số thường được biểu diễn ở hệ cơ số 16. Ta có thể sử dụng con trỏ (pointer) để lưu địa chỉ của các biến.
-- ***Con trỏ:***
+	| Giá trị |          |     5    |...|     's'    |          |
+	|   Biến  |          |     x    |...|    char    |          |
+- Khi khai báo biến, trình biên dịch dành riêng một vùng nhớ với địa chỉ duy nhất để lưu biến. Trình biên dịch có nhiệm vụ liên kết địa chỉ ô nhớ đó với tên biến. Khi gọi tên biến, nó sẽ truy xuất tự động đến ô nhớ đã liên kết với tên biến để lấy dữ liệu. Các bạn phải luôn phân biệt giữa `địa chỉ bộ nhớ` và `dữ liệu được lưu trong đó`.
+- Địa chỉ của biến bản chất cũng là một con số thường được biểu diễn ở `hệ cơ số 16`. Ta có thể sử dụng con trỏ (pointer) để lưu địa chỉ của các biến.
+- ***Con trỏ(pointer):***
 	- Trong ngôn ngữ C/C++, con trỏ (pointer) là những biến lưu trữ địa chỉ bộ nhớ của những biến khác.
 	- Kích thước của các biến con trỏ có khác nhau không? Con trỏ chỉ lưu địa chỉ nên kích thước của mọi con trỏ là như nhau. Kích thước này phụ thuộc vào môi trường hệ thống máy tính:
-		- Môi trường Windows 32 bit: 4 bytes
-        - Môi trường Windows 64 bit: 8 bytes
+		- `Môi trường Windows 32 bit: 4 bytes`
+        - `Môi trường Windows 64 bit: 8 bytes`
 ### Các loại con trỏ:
 - ***Con trỏ NULL:*** Con trỏ NULL là con trỏ lưu địa chỉ 0x00000000. Tức địa chỉ bộ nhớ 0, có ý nghĩa đặc biệt, cho biết con trỏ không trỏ vào đâu cả.
 	```c
@@ -352,13 +352,11 @@
 	int *p3 = NULL; //con trỏ null không trỏ đến vùng nhớ nào
 	int *p4 = null; // Lỗi "null" phải viết in hoa
 	```
-- ***Con trỏ của con trỏ:*** Con trỏ này dùng để lưu địa chỉ của con trỏ khác.
+- ***Con trỏ đến con trỏ(pointer to pointer):*** Con trỏ này dùng để lưu địa chỉ của con trỏ khác.
 	```c
 	int x = 10;
-    int *p1;
-    int **p2;
-    p1 = &x;     // Con trỏ p1 trỏ đến biến x và giá trị của p1 chỉnh là địa chỉ của biến x
-    p2 = &p1;	 // Con trỏ p2 trỏ đến con trỏ p1 và lưu địa chỉ của con trỏ p1 vào p2
+    int *p1 = &x;     // Con trỏ p1 trỏ đến biến x và giá trị của p1 chỉnh là địa chỉ của biến x
+    int **p2 = &p1;	 // Con trỏ p2 trỏ đến con trỏ p1 và lưu địa chỉ của con trỏ p1 vào p2  
 
     printf("Giá trị của x: %d\n", *p1); //Giá trị của x: 10
     printf("Địa chỉ của x: %p\n", p1); //Địa chỉ của x: 0x7ffee2a697a8 
@@ -380,7 +378,7 @@
 	ptr = &f;
 	printf("f = %f\n",(float*)ptr);
 	```
-- Con trỏ hàm (Function Pointers): Dùng để lưu trữ và gọi các hàm thông qua con trỏ.
+- ***Con trỏ hàm (Function Pointers):*** Dùng để lưu trữ và gọi các hàm thông qua con trỏ.
 	```c
 	int add(int a, int b) {
 		return a + b;
@@ -403,10 +401,50 @@
 	}
 
 	```
+- ***Con trỏ vào hàm (Pointers to Functions):*** Lưu trữ địa chỉ của một hàm cụ thể để gọi hàm thông qua con trỏ.
+	```c
+	int add(int a, int b) {
+		return a + b;
+	}
+	int subtract(int a, int b) {
+		return a - b;
+	}
 
+	void performOperation(int a, int b, int (*operation)(int, int)) {
+		int result = operation(a, b);
+		printf("Result: %d\n", result);
+	}
+
+	int main() {
+		int a = 5, b = 3;
+
+		performOperation(a, b, add);
+		performOperation(a, b, subtract);
+
+		return 0;
+	}
+
+	```
+- ***Con trỏ hàm parameter (Function Pointer Parameters):*** Truyền một hàm như một tham số cho một hàm khác.
+	```c
+	void greet() {
+		printf("Hello, World!\n");
+	}
+
+	void performAction(void (*action)()) {
+		action();
+	}
+
+	int main() {
+		performAction(greet);
+
+		return 0;
+	}
+
+	```
 ### Lưu ý khi sử dụng con trỏ
 - Khi khởi tạo con trỏ NULL: Chữ NULL phải viết hoa, viết thường null sẽ bị lỗi.
 - Không nên sử dụng con trỏ khi chưa được khởi tạo: Kết quả tính toán có thể sẽ phát sinh những lỗi không lường trước được nếu chưa khởi tạo con trỏ.
-- Sử dụng biến con trỏ sai cách
+- Sử dụng biến con trỏ sai cách.
 
 </details>
