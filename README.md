@@ -331,9 +331,31 @@
 
 <details>
   <summary><h2>▶Pointer</h2></summary>
-	- Bộ nhớ RAM chứa rất nhiều ô nhớ, mỗi ô nhớ có kích thước 1 byte. Mỗi ô nhớ có địa chỉ duy nhất và địa chỉ này được đánh số từ 0 trở đi. Nếu CPU 32 bit thì có 2^32 địa chỉ có thể đánh cho các ô nhớ trong RAM.
-	| 0 | 1 | 2 | 3 | ... | 2^32-2 | 2^32-1 |
-  	|---|---|---|---|---|---|:---:|
-  	|0|0|  0|  0|  0|  0|  0|  0|
-	- Khi khai báo biến, trình biên dịch dành riêng một vùng nhớ với địa chỉ duy nhất để lưu biến. Trình biên dịch có nhiệm vụ liên kết địa chỉ ô nhớ đó với tên biến. Khi gọi tên biến, nó sẽ truy xuất tự động đến ô nhớ đã liên kết với tên biến để lấy dữ liệu. Các bạn phải luôn phân biệt giữa địa chỉ bộ nhớ và dữ liệu được lưu trong đó.
+	
+- Bộ nhớ RAM chứa rất nhiều ô nhớ, mỗi ô nhớ có kích thước 1 byte. Mỗi ô nhớ có địa chỉ duy nhất và địa chỉ này được đánh số từ 0 trở đi. Nếu CPU 32 bit thì có 2^32 địa chỉ có thể đánh cho các ô nhớ trong RAM.
+	| Ô nhớ | 0 | 1 | ... | 2^32-2 | 2^32-1 |
+  	|:-------:|:--------:|:--------:|---|:----------:|:--------:|
+  	| Địa chỉ |0x00000000|0x00000001|...|0x0=fffffffe|0xffffffff|
+	| Giá trị |     0    |     5    |...|     's'    |     0    |
+	|   Biến  |     0    |     x    |...|    char    |     0    |
+- Khi khai báo biến, trình biên dịch dành riêng một vùng nhớ với địa chỉ duy nhất để lưu biến. Trình biên dịch có nhiệm vụ liên kết địa chỉ ô nhớ đó với tên biến. Khi gọi tên biến, nó sẽ truy xuất tự động đến ô nhớ đã liên kết với tên biến để lấy dữ liệu. Các bạn phải luôn phân biệt giữa địa chỉ bộ nhớ và dữ liệu được lưu trong đó.
+- Địa chỉ của biến bản chất cũng là một con số thường được biểu diễn ở hệ cơ số 16. Ta có thể sử dụng con trỏ (pointer) để lưu địa chỉ của các biến.
+- ***Con trỏ:***
+	- Trong ngôn ngữ C/C++, con trỏ (pointer) là những biến lưu trữ địa chỉ bộ nhớ của những biến khác.
+	- Kích thước của các biến con trỏ có khác nhau không? Con trỏ chỉ lưu địa chỉ nên kích thước của mọi con trỏ là như nhau. Kích thước này phụ thuộc vào môi trường hệ thống máy tính:
+		- Môi trường Windows 32 bit: 4 bytes
+        - Môi trường Windows 64 bit: 8 bytes
+### Các loại con trỏ:
+- Con trỏ NULL: Con trỏ NULL là con trỏ lưu địa chỉ 0x00000000. Tức địa chỉ bộ nhớ 0, có ý nghĩa đặc biệt, cho biết con trỏ không trỏ vào đâu cả.
+	```c
+	int *p2;//con trỏ chưa khởi tạo, vẫn trỏ đến một vùng nhớ nào đó không xác định
+	int *p3 = NULL;//con trỏ null không trỏ đến vùng nhớ nào
+	```
+- Con trỏ của con trỏ: Con trỏ này dùng để lưu địa chỉ của con trỏ khác.
+
+### Lưu ý khi sử dụng con trỏ
+	- Khi khởi tạo con trỏ NULL: Chữ NULL phải viết hoa, viết thường null sẽ bị lỗi.
+	- Không nên sử dụng con trỏ khi chưa được khởi tạo: Kết quả tính toán có thể sẽ phát sinh những lỗi không lường trước được nếu chưa khởi tạo con trỏ.
+	- Sử dụng biến con trỏ sai cách
+
 </details>
