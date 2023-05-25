@@ -331,5 +331,9 @@
 
 <details>
   <summary><h2>▶Pointer</h2></summary>
-	
+	- Bộ nhớ RAM chứa rất nhiều ô nhớ, mỗi ô nhớ có kích thước 1 byte. Mỗi ô nhớ có địa chỉ duy nhất và địa chỉ này được đánh số từ 0 trở đi. Nếu CPU 32 bit thì có 2^32 địa chỉ có thể đánh cho các ô nhớ trong RAM.
+	| 0 | 1 | 2 | 3 | ... | 2^32-2 | 2^32-1 |
+  	|---|---|---|---|---|---|:---:|
+  	|0|0|  0|  0|  0|  0|  0|  0|
+	- Khi khai báo biến, trình biên dịch dành riêng một vùng nhớ với địa chỉ duy nhất để lưu biến. Trình biên dịch có nhiệm vụ liên kết địa chỉ ô nhớ đó với tên biến. Khi gọi tên biến, nó sẽ truy xuất tự động đến ô nhớ đã liên kết với tên biến để lấy dữ liệu. Các bạn phải luôn phân biệt giữa địa chỉ bộ nhớ và dữ liệu được lưu trong đó.
 </details>
