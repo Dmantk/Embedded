@@ -346,16 +346,67 @@
 		- Môi trường Windows 32 bit: 4 bytes
         - Môi trường Windows 64 bit: 8 bytes
 ### Các loại con trỏ:
-- Con trỏ NULL: Con trỏ NULL là con trỏ lưu địa chỉ 0x00000000. Tức địa chỉ bộ nhớ 0, có ý nghĩa đặc biệt, cho biết con trỏ không trỏ vào đâu cả.
+- ***Con trỏ NULL:*** Con trỏ NULL là con trỏ lưu địa chỉ 0x00000000. Tức địa chỉ bộ nhớ 0, có ý nghĩa đặc biệt, cho biết con trỏ không trỏ vào đâu cả.
 	```c
-	int *p2;//con trỏ chưa khởi tạo, vẫn trỏ đến một vùng nhớ nào đó không xác định
-	int *p3 = NULL;//con trỏ null không trỏ đến vùng nhớ nào
+	int *p2; //con trỏ chưa khởi tạo, vẫn trỏ đến một vùng nhớ nào đó không xác định
+	int *p3 = NULL; //con trỏ null không trỏ đến vùng nhớ nào
+	int *p4 = null; // Lỗi "null" phải viết in hoa
 	```
-- Con trỏ của con trỏ: Con trỏ này dùng để lưu địa chỉ của con trỏ khác.
+- ***Con trỏ của con trỏ:*** Con trỏ này dùng để lưu địa chỉ của con trỏ khác.
+	```c
+	int x = 10;
+    int *p1;
+    int **p2;
+    p1 = &x;     // Con trỏ p1 trỏ đến biến x và giá trị của p1 chỉnh là địa chỉ của biến x
+    p2 = &p1;	 // Con trỏ p2 trỏ đến con trỏ p1 và lưu địa chỉ của con trỏ p1 vào p2
+
+    printf("Giá trị của x: %d\n", *p1); //Giá trị của x: 10
+    printf("Địa chỉ của x: %p\n", p1); //Địa chỉ của x: 0x7ffee2a697a8 
+    printf("Giá trị của x: %d\n", **p2); //Giá trị của x: 10
+    printf("Địa chỉ của p1: %p\n", p2); //Địa chỉ của p1: 0x7ffee2a697a0
+	```
+- ***Con trỏ hằng (Constant Pointers):*** Không thể thay đổi giá trị mà nó trỏ tới, nhưng có thể thay đổi địa chỉ mà nó trỏ tới.
+	```c
+	int num = 10; 
+	const int *ptr = &num; //thay đổi được địa chỉ của num nhưng không thay đổi được giá trị '10' của num
+	```
+- ***Con trỏ void (Void Pointers):*** Con trỏ void có thể trỏ tới bất kỳ kiểu dữ liệu nào, nhưng khi xuất ra giá trị thì phải ép kiểu.
+	```c
+	int num = 10;
+	float f = 3.14;
+	void *ptr;
+	ptr = &num;
+	printf("num = %d\n",(int*)ptr);
+	ptr = &f;
+	printf("f = %f\n",(float*)ptr);
+	```
+- Con trỏ hàm (Function Pointers): Dùng để lưu trữ và gọi các hàm thông qua con trỏ.
+	```c
+	int add(int a, int b) {
+		return a + b;
+	}
+	int subtract(int a, int b) {
+		return a - b;
+	}
+
+	int main() {
+	
+		int (*operation)(int, int) = add;
+		int result = operation(5, 3);
+		printf("Result: %d\n", result);
+
+		operation = subtract;
+		result = operation(5, 3);
+		printf("Result: %d\n", result);
+
+		return 0;
+	}
+
+	```
 
 ### Lưu ý khi sử dụng con trỏ
-	- Khi khởi tạo con trỏ NULL: Chữ NULL phải viết hoa, viết thường null sẽ bị lỗi.
-	- Không nên sử dụng con trỏ khi chưa được khởi tạo: Kết quả tính toán có thể sẽ phát sinh những lỗi không lường trước được nếu chưa khởi tạo con trỏ.
-	- Sử dụng biến con trỏ sai cách
+- Khi khởi tạo con trỏ NULL: Chữ NULL phải viết hoa, viết thường null sẽ bị lỗi.
+- Không nên sử dụng con trỏ khi chưa được khởi tạo: Kết quả tính toán có thể sẽ phát sinh những lỗi không lường trước được nếu chưa khởi tạo con trỏ.
+- Sử dụng biến con trỏ sai cách
 
 </details>
