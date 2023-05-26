@@ -2,6 +2,15 @@
   <summary><h2>▶Quá trình biên dịch</h2></summary>
 	
 Quy trình dịch là quá trình chuyển đổi từ ngôn ngữ bậc cao (NNBC) (C/C++, Pascal, Java, C#…) sang ngôn ngữ đích (ngôn ngữ máy) để máy tính có thể hiểu và thực thi. Ngôn ngữ lập trình C là một ngôn ngữ dạng biên dịch. Chương trình được viết bằng C muốn chạy được trên máy tính phải trải qua một quá trình biên dịch để chuyển đổi từ dạng mã nguồn sang chương trình dạng mã thực thi.
+
+| Stack |
+|:-----:|
+|   ↓   |
+|   ↑   |	
+|  Heap |
+|  Bss(Uninitialized data)  |
+|  Data(Initialized data)   |
+|  Text |
 	
 ### Quá trình biên dịch bao gồm 4 giai đoạn:
 	
