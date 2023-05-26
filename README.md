@@ -77,7 +77,7 @@ Quy trình dịch là quá trình chuyển đổi từ ngôn ngữ bậc cao (NN
 |  Text |
 - ***Text:*** Quyền truy cập chỉ có thể Read
 	- Chứa khai báo các hằng số(.rodata)
-	- Nó chưa lệnh thực thị nên tránh sửa đổi instruction
+	- Nó chưa lệnh thực thi nên tránh sửa đổi instruction
 - ***Data:*** Quyền truy cập Read-Write
 	- Chứa biến toàn cục hoặc biến static: Có giá trị khởi tạo khác 0
 	- Được giải phóng khi kết thúc chương trình
