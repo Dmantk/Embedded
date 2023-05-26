@@ -100,7 +100,8 @@ Quy trình dịch là quá trình chuyển đổi từ ngôn ngữ bậc cao (NN
 	- Đặc điểm vùng nhớ
 		- Stack: vùng nhớ Stack được quản lý bởi hệ điều hành, dữ liệu được lưu trong Stack sẽ tự động hủy khi hàm thực hiện xong công việc của mình.
 		- Heap: Vùng nhớ Heap được quản lý bởi lập trình viên (trong C hoặc C++), dữ liệu trong Heap sẽ không bị hủy khi hàm thực hiện xong, điều đó có nghĩa bạn phải tự tay hủy vùng nhớ bằng câu lệnh free (trong C), và delete hoặc delete [] (trong C++), nếu không sẽ xảy ra hiện tượng rò rỉ bộ nhớ. 
-	### Lưu ý: Việc tự động dọn vùng nhớ còn tùy thuộc vào trình biên dịch trung gian.
+	### Lưu ý: 
+	- Việc tự động dọn vùng nhớ còn tùy thuộc vào trình biên dịch trung gian.
 	- Vấn đề lỗi xảy ra đối với vùng nhớ Stack: Bởi vì bộ nhớ Stack cố định nên nếu chương trình bạn sử dụng quá nhiều bộ nhớ vượt quá khả năng lưu trữ của Stack chắc chắn sẽ xảy ra tình trạng tràn bộ nhớ Stack (Stack overflow), các trường hợp xảy ra như bạn khởi tạo quá nhiều biến cục bộ, hàm đệ quy vô hạn,..
 		- Ví dụ về tràn bộ nhớ stack với hàm đệ quy vô hạn:
 		```C
