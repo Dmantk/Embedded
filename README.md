@@ -26,6 +26,28 @@ Quy trình dịch là quá trình chuyển đổi từ ngôn ngữ bậc cao (NN
 	- File sau khi được gộp lại thì sẽ có đuôi mở rộng Executable `.exe`, còn trên Linux và MacOs thì có thể có đuối theo chỉ định hoặc không có đuôi mở rộng.
 
 - Để chạy file code C trên `terminal` dùng lệnh `gcc -o filename filename.c` đẻ tạo ra tệp thực thi, sau đó dùng lệnh `./filename` để chạy tệp thực thi đó.
+
+### Boot Mode
+- Cấp nguồn:
+	- Khi cấp nguồn cho vi điều khiển, nó sẽ bắt đầu quá trình khởi động.
+	- Lúc này các thanh ghi và bộ nhớ của vi điều khiển sẽ có giá trị không xác định.
+- Tạo Stack Pointer(SP):
+	- Stack Pointer(SP) là một thanh ghi đặc biệt để quản lý ngăn xếp(stack).
+	- Giá trị ban đầu của SP thường được thiết lập tại địa chỉ nhất định trong bộ nhớ.
+	- Quá trình thiết lập SP có thể thực hiện thông qua việc gán giá trị một địa chỉ cố định vào thanh ghi SP.
+- Tạo Program Counter(PC):
+	- Là một thanh ghi đặt biệt dùng để lưu địa chỉ của lệnh hiện tại được thực thi.
+	- Giá trị ban đầu của PC thường được thiết lập là địa chỉ bắt đầu của chương trình
+	- Quá trình thiệt lập PC thực hiện thông qua việc gán giá trị địa chỉ bắt đầu của chương trình vào thanh ghi PC
+- Khởi động chương trình: 
+	- Sau khi SP và PC được khởi tạo thì chương trình chính bắt đầu khởi động
+	- Vi điều khiển sẽ đọc từng câu lệnh và thực thi nó.
+	- Nó sẽ thực hiện các lệnh tiếp theo bằng cách tăng giá trị của PC để trỏ đế địa chỉ lệnh tiếp theo
+	- Bước nhảy của địa chỉ tùy thuộc vào vi điều khiển (Ví dụ: vđk 8bit thì mỗi lần nhảy thì PC sẽ trỏ tới địa chỉ lên 1byte, tương tự 16bit sẽ là 2 bytes)
+	- Trong quá trình chạy, nếu gặp lệnh gọi hàm con thì VĐK sẽ tạo ra một ngăn xếp mới để lưu trữ các biến cục bộ và thông tin của hàm đó.
+		- Lúc này, giá trị của SP sẽ lưu lại địa chỉ của câu lệnh hiện tại và giá trị của PC sẽ trỏ tới địa chỉ bắt đầu của hàm con đó và thực thi .
+		- Sau khi chạy xong trả về kết quả. Thì ngăn xếp đó sẽ được giải phóng, PC sẽ được gán thành địa chỉ của SP trước đó và tiếp tục thực hiện chương trình.
+
 	
 </details>
 
