@@ -47,7 +47,25 @@ Quy trình dịch là quá trình chuyển đổi từ ngôn ngữ bậc cao (NN
 	- Trong quá trình chạy, nếu gặp lệnh gọi hàm con thì VĐK sẽ tạo ra một ngăn xếp mới để lưu trữ các biến cục bộ và thông tin của hàm đó.
 		- Lúc này, giá trị của SP sẽ lưu lại địa chỉ của câu lệnh hiện tại và giá trị của PC sẽ trỏ tới địa chỉ bắt đầu của hàm con đó và thực thi .
 		- Sau khi chạy xong trả về kết quả. Thì ngăn xếp đó sẽ được giải phóng, PC sẽ được gán thành địa chỉ của SP trước đó và tiếp tục thực hiện chương trình.
-
+- ***Ví dụ:*** Chương trình trên VĐK 32bits và địa chỉ của hàm ham() là 0x0000ff00.
+	```C
+	#include<stdio.h>
+	void ham() {
+    	int a = 5;
+	}
+	int main() {
+    	int b = ham();
+    	printf("%d", b);
+	}
+	```
+	Địa chỉ 0x00000000: Khởi động chương trình.
+	Địa chỉ 0x00000004: Khởi tạo SP với giá trị không xác định.
+	Địa chỉ 0x00000008: Khởi tạo PC với địa chỉ bắt đầu của hàm main(), và PC có giá trị là 0x00000008. SP không thay đổi.
+    Địa chỉ 0x0000000C: PC trỏ tới lệnh trong hàm main() và có địa chỉ là 0x0000000C. SP không thay đổi.
+   	Địa chỉ 0x00000010: PC trỏ tới lệnh gọi hàm ham(). PC có địa chỉ là 0x00000010, và SP được gán địa chỉ là 0x00000010 để sau khi chạy xong hàm ham(), PC có thể lấy địa chỉ của SP để chạy tiếp chương trình.
+    Địa chỉ 0x0000FF00: PC trỏ tới địa chỉ bắt đầu của hàm ham(), và PC có địa chỉ là 0x0000FF00. SP vẫn giữ nguyên giá trị là 0x00000010.
+  	Địa chỉ 0x0000FF04: PC tiếp tục nhảy thêm 4 byte đối với địa chỉ trước đó để thực hiện lệnh int a = 5, địa chỉ PC lúc này là 0x0000FF04. SP vẫn giữ nguyên giá trị là 0x00000010. Sau khi chạy xong hàm, PC sẽ quay trở lại địa chỉ của SP, tức là 0x00000010.
+   	Địa chỉ 0x00000014: PC trỏ tới lệnh printf("%d", b);. Lúc này, địa chỉ PC sẽ là 0x00000014, và SP vẫn giữ nguyên giá trị là 0x00000010.
 	
 </details>
 
