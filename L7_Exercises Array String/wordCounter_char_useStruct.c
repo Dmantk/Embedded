@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <stdlib.h>
+#include <ctype.h>
 
 typedef struct{
 	char* address;
@@ -10,8 +11,9 @@ typedef struct{
 void replaceChars(char* arr){
   char normalChars[] = ",.:;'()-_=+!@#$%^&*<>?/";
   for (int i=0;arr[i]!='\0';i++){
+  	arr[i] = tolower(arr[i]);
 		for(int j=0;normalChars[j]!='\0';j++){
-			if (arr[i] == normalChars[j]){
+			if(arr[i] == normalChars[j]){
 				arr[i] = ' ';
 				break;
 			}
@@ -85,7 +87,7 @@ void wordCounter(words* word, int numWords){
 
 
 int main() {
-	char arr[] = "mot hai ba, hai ba mot ";
+	char arr[] = " Mot  hai ba, hai. Ba mot ";
 	int size = sizeof(arr)/sizeof(arr[0])-1;
 	replaceChars(arr);
 	words* listWord = malloc(sizeof(words));
