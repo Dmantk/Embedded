@@ -517,5 +517,10 @@ Quy trình dịch là quá trình chuyển đổi từ ngôn ngữ bậc cao (NN
 <details>
   <summary><h2>▶ C++ programming language</h2></summary>
 
- 
+<details>
+  <summary><h3>Class</h3></summary>
+
+
+</details>
+
 </details>
