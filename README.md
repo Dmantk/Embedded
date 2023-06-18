@@ -1,5 +1,8 @@
 <details>
-  <summary><h2>▶Quá trình biên dịch</h2></summary>
+  <summary><h2>▶ C programming language</h2></summary>
+	
+<details>
+  <summary><h3>Quá trình biên dịch</h3></summary>
 	
 Quy trình dịch là quá trình chuyển đổi từ ngôn ngữ bậc cao (NNBC) (C/C++, Pascal, Java, C#…) sang ngôn ngữ đích (ngôn ngữ máy) để máy tính có thể hiểu và thực thi. Ngôn ngữ lập trình C là một ngôn ngữ dạng biên dịch. Chương trình được viết bằng C muốn chạy được trên máy tính phải trải qua một quá trình biên dịch để chuyển đổi từ dạng mã nguồn sang chương trình dạng mã thực thi.
 	
@@ -63,9 +66,9 @@ Quy trình dịch là quá trình chuyển đổi từ ngôn ngữ bậc cao (NN
 
 
 <details>
-  <summary><h2>▶Phân vùng bộ nhớ trên RAM, cấp phát bộ nhớ động</h2></summary>
+  <summary><h3>Phân vùng bộ nhớ trên RAM, cấp phát bộ nhớ động</h3></summary>
 	
-<h3>Phân vùng bộ nhớ trên RAM, cấp phát bộ nhớ động</h3>
+### Phân vùng bộ nhớ trên RAM
 
 | Stack |
 |:-----:|
@@ -137,7 +140,7 @@ Quy trình dịch là quá trình chuyển đổi từ ngôn ngữ bậc cao (NN
 
 
 <details>
-  <summary><h2>▶Các biến trong C</h2></summary>
+  <summary><h3>Các biến trong C</h3></summary>
 	
 - Biến số nguyên (Integer Variables): Lưu trữ giá trị số nguyên không có phần thập phân.
 	`int age = 25;`
@@ -273,7 +276,7 @@ Quy trình dịch là quá trình chuyển đổi từ ngôn ngữ bậc cao (NN
 
 
 <details>
-  <summary><h2>▶Macro, Inline, Function</h2></summary>
+  <summary><h3>Macro, Inline, Function</h3></summary>
 
 - **_Macro:_** Được xử lý bởi preprocessor
     - Thay thế đoạn code được khai báo macro vào bất cứ chỗ nào xuất hiện macro đó
@@ -298,7 +301,7 @@ Quy trình dịch là quá trình chuyển đổi từ ngôn ngữ bậc cao (NN
 
 
 <details>
-  <summary><h2>▶BitWise Operarion (Thao tác bit)</h2></summary>
+  <summary><h3>BitWise Operarion (Thao tác bit)</h3></summary>
 
 - AND (Biểu thức AND): Ký hiệu: `&`.
 	| A | B | A & B |
@@ -370,7 +373,7 @@ Quy trình dịch là quá trình chuyển đổi từ ngôn ngữ bậc cao (NN
 
 
 <details>
-  <summary><h2>▶Struct và Union</h2></summary>
+  <summary><h3>Struct và Union</h3></summary>
 
 - Về mặt ý nghĩa, struct và union cơ bản giống nhau. Tuy nhiên, về mặt lưu trữ trong bộ nhớ, chúng có sự khác biệt rõ rệt như sau:
 	- struct: Dữ liệu của các thành viên của struct được lưu trữ ở những vùng nhớ khác nhau. Do đó kích thước của 1 struct tối thiểu bằng kích thước các thành viên cộng lại tại vì còn phụ thuộc vào bộ nhớ đệm (struct padding).
@@ -381,7 +384,7 @@ Quy trình dịch là quá trình chuyển đổi từ ngôn ngữ bậc cao (NN
 
 
 <details>
-  <summary><h2>▶Pointer</h2></summary>
+  <summary><h3>Pointer</h3></summary>
 	
 - Bộ nhớ RAM chứa rất nhiều ô nhớ, `mỗi ô nhớ có kích thước 1 byte`. Mỗi ô nhớ có địa chỉ duy nhất và địa chỉ này được đánh số từ 0 trở đi. Nếu `CPU 32bit` thì có `2^32 địa chỉ` có thể đánh cho các ô nhớ trong RAM.
 	| Ô nhớ | 0 | 1 | ... | 2^32-2 | 2^32-1 |
@@ -498,4 +501,21 @@ Quy trình dịch là quá trình chuyển đổi từ ngôn ngữ bậc cao (NN
 - Không nên sử dụng con trỏ khi chưa được khởi tạo: Kết quả tính toán có thể sẽ phát sinh những lỗi không lường trước được nếu chưa khởi tạo con trỏ.
 - Sử dụng biến con trỏ sai cách.
 
+</details>
+</details>
+
+
+
+
+
+
+
+
+
+
+
+<details>
+  <summary><h2>▶ C++ programming language</h2></summary>
+
+ 
 </details>
