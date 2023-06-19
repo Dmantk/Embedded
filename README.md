@@ -793,7 +793,7 @@ Modifiers
 	```
 ### Map là gì?
 - là một cấu trúc dữ liệu ánh xạ (associative container) trong thư viện chuẩn của ngôn ngữ. Nó được sử dụng để lưu trữ các cặp key-value, trong đó mỗi key là duy nhất và liên kết với một giá trị (value) tương ứng.
-- Dùng thư viện `#include<list>`.
+- Dùng thư viện `#include<map>`.
 - Ví dụ:
 	```c++
 	#include <map>
