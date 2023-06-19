@@ -519,7 +519,47 @@ Quy trình dịch là quá trình chuyển đổi từ ngôn ngữ bậc cao (NN
 
 <details>
   <summary><h3>Class</h3></summary>
+	
+### Class là gì?
 
+- Class là một cấu trúc dữ liệu tự định nghĩa, nó cho phép lập trình viên tạo ra các đối tượng (objects) mới có cùng bản chất. 
+- Class định nghĩa các thuộc tính **data members** còn gọi là `property` và phương thức **member functions** còn gọi là `method` mà các đối tượng của nó có thể sử dụng.
+- Trong C++, từ khóa `class` sẽ chỉ điểm bắt đầu của một class sẽ được cài đặt. Class trong C++ giúp tổ chức mã nguồn một cách có cấu trúc và tái sử dụng, đồng thời cho phép ẩn thông tin và triển khai tính kế thừa, đa hình và đóng gói.
+
+### Khai báo class và sử dụng class.
+```C++
+class Person {
+	public:
+	string firstName; // property
+	string lastName; // property
+	int age; // property
+	void fullname() { // method
+	cout << firstName << ' ' << lastName; //trong tiêu chuẩn AutoSar thì không nên code ở đây
+	}
+};
+```
+- ***Lưu ý:*** Theo tiêu chuẩn của AutoSar thì trong class chỉ là định nghĩa các member, chứ không nên code trong phần body của class. Mà ta nên code riêng ra ngoài.
+```C++
+class Person {
+	public:
+	string firstName; // property
+	string lastName; // property
+	int age; // property
+	void fullname(); // method
+};
+void Person::fullname(){
+	cout << firstName << ' ' << lastName;
+}
+int main(){
+	Person sv; //sv được gọi là object, object sv thuộc class Person
+	sv.firstName = "An";
+	sv.lastName = "Duong"; 
+	sv.age = 23;
+	sv.fullname();
+	return 0;
+}
+```
+### Phạm vi truy cập
 
 </details>
 
