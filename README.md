@@ -808,6 +808,12 @@ Modifiers
 		return 0;
 	}
 	```
+ ### Ưu điểm và nhược điểm của Vector, List và Map:
+
+ |            | Vector                   | List                        | Map                            |
+|------------|--------------------------|-----------------------------|--------------------------------|
+| Ưu điểm    | - Truy cập ngẫu nhiên hiệu quả thông qua chỉ mục (index). <br> - Được triển khai dưới dạng mảng liên tiếp trong bộ nhớ. <br> - Hỗ trợ thay đổi kích thước dễ dàng. | - Chèn và xóa phần tử ở bất kỳ vị trí nào có độ phức tạp O(1). <br> - Không cần dùng thêm bộ nhớ liền kề để mở rộng kích thước. <br> - Linh hoạt trong việc chèn, xóa và truy xuất. | - Lưu trữ các cặp key-value và tự động sắp xếp theo key. <br> - Truy cập hiệu quả thông qua key. <br> - Hỗ trợ các phương thức cho việc chèn, xóa và truy xuất. |
+| Nhược điểm | - Chèn và xóa phần tử ở vị trí không phải cuối cùng có độ phức tạp O(n). <br> - Cần dùng thêm bộ nhớ liền kề để mở rộng kích thước. <br> - Không hiệu quả cho chèn và xóa phần tử ở đầu hoặc giữa vector. | - Truy cập ngẫu nhiên chậm hơn so với vector. <br> - Chiếm nhiều bộ nhớ hơn do lưu trữ các con trỏ liên kết. | - Tốn nhiều bộ nhớ hơn do lưu trữ các key-value pairs và con trỏ liên kết. <br> - Thời gian tìm kiếm và truy xuất có độ phức tạp O(log n). <br> - Không hỗ trợ truy cập ngẫu nhiên bằng chỉ mục (index). |
 
 </details>
 
