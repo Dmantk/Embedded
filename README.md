@@ -729,9 +729,85 @@ int main(){
 	
 </details>
 <details>
-  <summary><h3>Template</h3></summary>
+  <summary><h3>Vector, List & Map</h3></summary>
 
+### Vector là gì?
+- Vector là một cấu trúc dữ liệu trong C++ dùng để chứa các đối tượng khác. Tương tự như mảng (array), vector cũng có thể chứa nhiều phần tử.
+- Các phần tử trong vector được lưu trữ một cách liên tiếp trong bộ nhớ. Điều này cho phép truy cập dễ dàng đến các phần tử bằng cách sử dụng chỉ số (index).
+- vector khác mảng thông thường là kích thước của vector có thể thay đổi trong quá trình thực thi chương trình. Khi cần, vector có thể mở rộng (tăng kích thước) hoặc thu hẹp (giảm kích thước) để chứa thêm hoặc loại bỏ các phần tử.
+- Sử dụng thư viện `#include<vector>`.
+- Modifiers:
+Modifiers
+	- ***push_back():*** Hàm đẩy một phần tử vào vị trí sau cùng của vector. Nếu kiểu của đối tượng được truyền dưới dạng tham số trong push_back() không giống với kiểu của vector thì sẽ bị ném ra. VD: ten-vector.push_back(ten-cua-phan-tu);
+	- ***assign():*** Nó gán một giá trị mới cho các phần tử vector bằng cách thay thế các giá trị cũ. VD: ten-vector.assign(int size, int value);
+	- ***pop_back():*** Hàm pop_back () được sử dụng để xóa đi phần tử cuối cùng một vector.
+	- ***insert():*** Hàm này chèn các phần tử mới vào trước phần tử trước vị trí được trỏ bởi vòng lặp. Chúng ta cũng có thể chuyển một số đối số thứ ba, đếm số lần phần tử được chèn vào trước vị trí được trỏ.
+   	- ***erase():*** Hàm được sử dụng để xóa các phần tử tùy theo vị trí vùng chứa
+	- ***emplace():*** Nó mở rộng vùng chứa bằng cách chèn phần tử mới vào
+	- ***emplace_back():*** Nó được sử dụng để chèn một phần tử mới vào vùng chứa vector, phần tử mới sẽ được thêm vào cuối vector
+	- ***swap():*** Hàm được sử dụng để hoán đổi nội dung của một vector này với một vector khác cùng kiểu. Kích thước có thể khác nhau.
+	- ***clear():*** Hàm được sử dụng để loại bỏ tất cả các phần tử của vùng chứa vector.
+- Ví dụ:
+	```c++
+	//dùng thư viện vector giống cấp phát bộ nhớ động trong c, nhưng có thư viện hỗ trợ các công cụ nhanh hơn.
+	#include <vector>
 	
+	vector<int> array;	// khai báo mảng kiểu int
+	array.push_back(4);  //thêm phần tử tại 0 là 4
+	array.push_back(8);  //thêm phần tử tại 1 là 8
+	array.push_back(20);
+	array.push_back(15); //thêm phần tử tại 4 là 15
+	
+	//từ C++ 11 trở đi có for cải :
+	for(int item : array){ // có thể dùng biến auto item, biến auto sẽ tự định nghĩa item thuộc kiểu dữ liệu gì tùy vào giá trị và nó được lưu
+		printf("i = %d\n",item);
+	}
+	
+	array.pop_back(); //xóa phần tử cuối cùng, xóa 15
+	array.insert(array.begin()+2,77); //chèn phần tử tại 2 là 77, các phần tử phía sau sẽ dời vị trí cho nhau.
+	array.erase(array.begin()+2); // xóa phần tử thứ 2, dời những phần tử phía sau lên.
+	array.clear(); //thu hồi vùng nhớ giống free
+	
+	for(int i =0;i<array;i++){
+		printf("%d\n",array[i]);
+	}
+	```
+
+### List là gì?
+- List là một cấu trúc dữ liệu danh sách liên kết kép (doubly linked list).
+- Các phần tử cửa nó không được lưu trong các địa liên tiếp mà lưu ở địa chỉ bất kì, và mỗi phần tử trước sẽ lưu kèm địa chỉ của phần tử kế tiếp theo tuần tự.
+- Vì cung cấp một danh sách các phần tử được liên kết với nhau bằng các con trỏ, cho phép thêm, xóa và truy cập các phần tử một cách linh hoạt.
+- Dùng thư viện `#include<list>`.
+- Ví dụ:
+	```c++
+	#include<list>
+	list<int> array;	// khai báo mảng kiểu int
+	array.push_back(4);  //thêm phần tử thứ 0 là 4
+	array.push_back(8);  //thêm phần tử thứ 1 là 8
+	array.push_back(20);
+	array.push_back(15); //thêm phần tử thứ 4 là 15
+	
+	for(auto item : array){ //
+		printf("i = %d\n",item);
+	}
+	```
+### Map là gì?
+- là một cấu trúc dữ liệu ánh xạ (associative container) trong thư viện chuẩn của ngôn ngữ. Nó được sử dụng để lưu trữ các cặp key-value, trong đó mỗi key là duy nhất và liên kết với một giá trị (value) tương ứng.
+- Dùng thư viện `#include<list>`.
+- Ví dụ:
+	```c++
+	#include <map>
+	int main(){
+		map<string, string> SinhVien;
+		SinhVien["Ten"] = "Hoang";
+		SinhVien["Tuoi"] = "7";
+		SinhVien["Lop"] = "15";
+		for(auto item : SinhVien){
+			cout<<"Key: "<<itemp.first<<", value: "<<item.second<<endl;
+		}
+		return 0;
+	}
+	```
 
 </details>
 
