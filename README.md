@@ -521,7 +521,6 @@ Quy trình dịch là quá trình chuyển đổi từ ngôn ngữ bậc cao (NN
   <summary><h3>Class</h3></summary>
 	
 ### Class là gì?
-
 - Class là một cấu trúc dữ liệu tự định nghĩa, nó cho phép lập trình viên tạo ra các đối tượng (objects) mới có cùng bản chất. 
 - Class định nghĩa các thuộc tính **data members** còn gọi là `property` và phương thức **member functions** còn gọi là `method` mà các đối tượng của nó có thể sử dụng.
 - Trong C++, từ khóa `class` sẽ chỉ điểm bắt đầu của một class sẽ được cài đặt. Class trong C++ giúp tổ chức mã nguồn một cách có cấu trúc và tái sử dụng, đồng thời cho phép ẩn thông tin và triển khai tính kế thừa, đa hình và đóng gói.
@@ -539,28 +538,86 @@ class Person {
 };
 ```
 - ***Lưu ý:*** Theo tiêu chuẩn của AutoSar thì trong class chỉ là định nghĩa các member, chứ không nên code trong phần body của class. Mà ta nên code riêng ra ngoài.
-```C++
-class Person {
-	public:
-	string firstName; // property
-	string lastName; // property
-	int age; // property
-	void fullname(); // method
+	```C++
+	class Person {
+		public:
+		string firstName; // property
+		string lastName; // property
+		int age; // property
+		void fullname(); // method
+	};
+	void Person::fullname(){
+		cout << firstName << ' ' << lastName;
+	}
+	int main(){
+		Person sv; //sv được gọi là object, object sv thuộc class Person 
+		//object chỉ có thể truy cập những member nào nằm trong public
+		sv.firstName = "An";
+		sv.lastName = "Duong"; 
+		sv.age = 23;
+		sv.fullname();
+		return 0;
+	}
+	```
+### Phạm vi truy cập (Access modifiers):
+- **Access modifier** là phạm vi truy cập của các thuộc tính và phương thức sẽ được khai báo bên dưới nó. Có 3 phạm vi truy cập trong C++ là `public`, `private` và `protecte`d.
+	- ***Public:*** Các member được khai báo trong Public thì các Object có thể truy cập trực tiếp tới được. Và các User có thể sử dụng và thay đổi các giá trị trong các member này
+	- ***Private:*** Được sử dụng khi bạn muốn chặn User truy cập vào những member khai báo trong phạm vi này, giới hạn truy cập và sửa đổi giá trị của chúng. Sử dụng các member trong Public để truy cập đến các member trong Private.
+	- ***Protected:*** Tương tự như Private, nhưng Private thì các class con không thể kết thừa được các member trong Private của class chính, còn Protected thì lại cho phép các class con có thể kế thừa được các member trong protected của class chính.
+ - 
+### Constructor
+- Constructor hay hàm dựng là một hàm đặc biệt.
+- Constructor là một hàm sẽ có tên trùng với tên của class.
+- Sẽ được gọi chạy đầu tiên ngay khi chúng ta khởi tạo một object.
+```c++
+class SinhVien{
+	public: 
+		SinhVien(int tuoi, int lop); //có tên trùng với tên của class gọi là contructor
+		void hienThi(); //method	
+	private: 
+		int tuoi; //property
+		int lop; //property
 };
-void Person::fullname(){
-	cout << firstName << ' ' << lastName;
+void SinhVien::hienThi(){
+	cout<<"Tuoi: "<<tuoi<<endl;  
+	cout<<"Lop "<<lop<<endl;
+}
+SinhVien::SinhVien(int tuoi,int lop){
+	SinhVien::tuoi = tuoi; //class SinhVien có thể truy cập đến tất cả nhưng member nằm trong nó
+	SinhVien::lop = lop;
 }
 int main(){
-	Person sv; //sv được gọi là object, object sv thuộc class Person
-	sv.firstName = "An";
-	sv.lastName = "Duong"; 
-	sv.age = 23;
-	sv.fullname();
+	// khi có contructor thì nó luôn luôn chạy đầu tiên khi object được khởi tạo.
+	// contructor có thể có tham số đầu vào hoặc không có
+	SinhVien sv(17,6); //có thể gán giá trị trực tiếp vào khai báo ở public
+	sv.hienThi();
 	return 0;
 }
 ```
-### Phạm vi truy cập
-
+### Các đặc tính của OOP
+- Có 4 đặc tính: Tính đa hình, tính kế thừa, tính trừu tượng, tính đóng gói.
+	- ***Inheritance (Tính kế thừa ):*** Một **class** có thể kế thừa các thuộc tính của một **class** khác đã tồn tại trước đó. Trong C++, khi một **class** con được tạo ra bởi việc kế thừa thuộc tính của **class** cha thì ta gọi class con đó là **subclass** và class cha là **superclass**. Chỉ có **Public** và **Protected** mới được kế thừa còn **Private** thì không được kế thừa, muốn kế thừa được các **member** trong **Private** buộc phải đổi lại **Protected**.
+		```c++
+  		class DoiTuong{
+			public:
+				void setThongTin(string ten, int tuoi);
+				void hienThi();
+			protected:
+				int TUOI; //property
+				string TEN;
+		};
+		
+		void DoiTuong::hienThi(){
+			cout<<"Day la class DoiTuong"<<endl;
+			cout<<"Ten: "<<TEN<<endl;  
+			cout<<"Tuoi "<<TUOI<<endl;
+		}
+		
+		void DoiTuong::setThongTin(string ten,int tuoi){
+			TEN = ten;
+			TUOI = tuoi;
+		}
+  		```
 </details>
 
 </details>
