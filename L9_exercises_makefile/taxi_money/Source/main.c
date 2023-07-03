@@ -14,7 +14,9 @@ int iMoreThan30km = 8000;
 
 int main() {
 
-	calculationMoney(iKilometerInput, iLessThan1km, iLessThan30km, iMoreThan30km);
+	int money;
+	money = calculationMoney(iKilometerInput, iLessThan1km, iLessThan30km, iMoreThan30km);
+	printf("Total of money: %d\n", money);
 	return 0;
 	
 }

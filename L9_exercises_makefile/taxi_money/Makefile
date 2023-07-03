@@ -1,22 +1,33 @@
-CC := gcc
-CXX := g++
-CFLAGS := -Wall -Wextra -std=c11 -IHeader
-CXXFLAGS := -Wall -Wextra -std=c++11 -IHeader
-TARGET := main
+CC = gcc
+CXX = g++
+CFLAGS = -Wall -Wextra
+CXXFLAGS = -Wall -Wextra -std=c++11
+INCLUDES = -IHeader
+SRCDIR = Source
 
-SRC_C := $(wildcard Source/*.c)
-SRC_CPP := $(wildcard Source/*.cpp)
+C_SOURCES = $(wildcard $(SRCDIR)/*.c)
+C_OBJECTS = $(patsubst $(SRCDIR)/%.c,%.o,$(C_SOURCES))
+CXX_SOURCES = $(wildcard $(SRCDIR)/*.cpp)
+CXX_OBJECTS = $(patsubst $(SRCDIR)/%.cpp,%.o,$(CXX_SOURCES))
+EXECUTABLE = main
+
+.INTERMEDIATE: $(C_OBJECTS) $(CXX_OBJECTS)
 
 .PHONY: all clean run
 
-all: $(TARGET)
+all: $(EXECUTABLE)
 
-$(TARGET): $(SRC_C) $(SRC_CPP)
-	# $(CXX) $(CXXFLAGS) $^ -o $@
-	$(CC) $(CXXFLAGS) $^ -o $@
+$(EXECUTABLE): $(C_OBJECTS) $(CXX_OBJECTS)
+	$(CXX) $(CFLAGS) $(C_OBJECTS) $(CXX_OBJECTS) -o $(EXECUTABLE)
 
-run: $(TARGET)
-	./$(TARGET)
+%.o: $(SRCDIR)/%.c
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+%.o: $(SRCDIR)/%.cpp
+	$(CXX) $(CXXFLAGS) $(INCLUDES) -c $< -o $@
+
+run: $(EXECUTABLE)
+	@./$(EXECUTABLE)
 
 clean:
-	$(RM) $(TARGET)
+	rm -f $(EXECUTABLE) $(C_OBJECTS) $(CXX_OBJECTS)

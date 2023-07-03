@@ -3,6 +3,6 @@
 
 #include "taxi_money.h"
 
-void calculationMoney(int iKilometerInput, int iLessThan1km, int iLessThan30km, int iMoreThan30km);
+int calculationMoney(int iKilometerInput, int iLessThan1km, int iLessThan30km, int iMoreThan30km);
 
 #endif

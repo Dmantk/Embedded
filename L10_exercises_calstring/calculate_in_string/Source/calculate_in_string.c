@@ -1,5 +1,16 @@
 #include "calculate_in_string.h"
 
+/*
+* Function: calculation
+* Description: This function is used to calculate addition, subtraction, multiplication, and division
+* Input:
+*   cSign - Sign of calculate
+*   iNum1 - fist number
+*   iNum2 - second number
+* Output:
+*   returns the result of that calculates
+*/
+
 int calculation(char cSign, int iNum1, int iNum2){
     int result = 0;
     if(cSign == '+')    result = iNum1 + iNum2;
@@ -8,6 +19,19 @@ int calculation(char cSign, int iNum1, int iNum2){
     if(cSign == '/')    result = iNum1 / iNum2;
     return result;
 }
+
+/*
+* Function: simplifyExpression
+* Description: This function is used to handle multiplication and division and then addition and subtraction.
+* Input:
+*   arrNumber - This is an array of numbers
+*   arrSign - This is an array of signs
+*   iIndexSign - Number of sign elements in array of signs
+*   start - The starting position of the calculation
+*   end - The endding position of the calculation
+* Output:
+*   The array of numbers and signs will be reordered after the calculation is done.
+*/
 
 void simplifyExpression(int* arrNumber, char* arrSign,int iIndexSign, int start, int end){
     for(int i = start; i < end; i++){
@@ -34,6 +58,15 @@ void simplifyExpression(int* arrNumber, char* arrSign,int iIndexSign, int start,
 }
 
 int (*calculationPtr)(char, int, int) = &calculation;
+
+/*
+* Function: calculate
+* Description: This function is used to parse strings divided into arrays of numbers and arrays of signs. Then consider the priority to calculate.
+* Input:
+*   arr - this is the string that the user entered.
+* Output:
+*   arrNumber[0] - Returns the result of a string calculation
+*/
 
 int calculate(char* arr){
     int i = 0, flag = 0;

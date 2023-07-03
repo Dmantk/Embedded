@@ -12,7 +12,7 @@
 *   iTotalMoney - total money you have to pay
 */
 
-void calculationMoney(int iKilometerInput, int iLessThan1km, int iLessThan30km, int iMoreThan30km) {
+int calculationMoney(int iKilometerInput, int iLessThan1km, int iLessThan30km, int iMoreThan30km) {
 	
 	int iTotalMoney;
 	
@@ -24,6 +24,6 @@ void calculationMoney(int iKilometerInput, int iLessThan1km, int iLessThan30km, 
 		iTotalMoney = iLessThan1km;
 	}
 
-	printf("Total of money: %d\n", iTotalMoney);
+	return iTotalMoney;
 	
 }

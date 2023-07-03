@@ -12,9 +12,11 @@ int iMonthInput = 6;
 int iYearInput = 2023;
 
 int main() {
+	
+    char* day = dayCheck(iDayInput, iMonthInput, iYearInput);
+    printf("%s\n", day);
 
-	dayCheck(iDayInput, iMonthInput, iYearInput);
-	
-	return 0;
-	
+    return 0;
+    
 }
+
