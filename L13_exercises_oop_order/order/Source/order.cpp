@@ -1136,6 +1136,7 @@ int choice(int start, int end)
 	bool flag = false;
 	do
 	{
+		flag = false;
 		cout << "--> Enter your choice: ";
 		cin >> choice;
 		if (cin.fail())
