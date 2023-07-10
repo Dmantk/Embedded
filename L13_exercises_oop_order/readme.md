@@ -1,3 +1,0 @@
-Tạo giao diện order:
-- Manager: Thêm danh sách món vào một vector kèm giá và tên. Trong giao diện có thể chỉnh sửa thay đổi tên món, giá món và cài đặt số bàn tại quán
-- Employee: Lấy danh sách món của manager đã cập nhật để  order. Employee sẽ chọn số bàn cần order thêm số lượng món và cũng có thể chỉnh sửa số lượng hoặc thay đổi món, sau đó xuất ra tổng bill và cập nhật trạng thái của bàn là dấu x, sử dụng map để có thể thêm trạng thái của bàn.
