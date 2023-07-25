@@ -514,6 +514,17 @@ Quy trình dịch là quá trình chuyển đổi từ ngôn ngữ bậc cao (NN
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 <details>
   <summary><h2>▶ C++ programming language</h2></summary>
 
@@ -818,4 +829,50 @@ Modifiers
 </details>
 
 
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+  <summary><h2>▶ Embedded</h2></summary>
+	
+<details>
+  <summary><h3>Các giao thức (Protocols)</h3></summary>
+
+<details>
+  <summary><h4>SPI protocol</h4></summary>
+
+- SPI(Serial Peripheral Interface) Là một chuẩn truyền thông nối tiếp đồng bộ, được dùng để truyền dữ liệu trong khoảng cách ngắn.
+- SPI giao tiếp ở chế độ chế độ song công toàn phần (full duplex).
+- SPI hỗ trợ truyền thông giữa một master và nhiều slave.
+
+![Connect with orther](https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/SPI_three_slaves.svg/350px-SPI_three_slaves.svg.png)
+- ***SCLK (Serial Clock):*** Xung clock phát ra từ master
+- ***MOSI (Master Out Slave In):*** Truyền data từ `master` đến `slave`. Chân `MOSI` ở `master` sẽ kết nối đến chân `MOSI` ở `slave`.
+- ***MISO (Master In Slave Out):*** Truyền data từ `slave` đến `master`. Chân `MISO` ở `master` sẽ kết nối đến chân `MISO` ở `slave`.
+- ***CS/SS (Chip/Slave Select):*** Chân CS được master sử dụng để lựa chọn slave cần giao tiếp. Master chỉnh chân SS xuống mức 0 để chọn slave truyền data.
+
+</details>
 </details>
