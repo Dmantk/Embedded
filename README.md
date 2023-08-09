@@ -864,9 +864,14 @@ Modifiers
 <details>
   <summary><h4>SPI protocol</h4></summary>
 
-- SPI(Serial Peripheral Interface) Là một chuẩn truyền thông nối tiếp đồng bộ, được dùng để truyền dữ liệu trong khoảng cách ngắn.
-- SPI giao tiếp ở chế độ chế độ song công toàn phần (full duplex).
-- SPI hỗ trợ truyền thông giữa một master và nhiều slave.
+- Các bit dữ liệu được truyền nối tiếp nhau và có xung clock đồng bộ.
+- Giao tiếp song công, có thể truyền và nhận cùng một thời điểm.
+- Khoảng cách truyền ngắn, được sử dụng để trao đổi dữ liệu với nhau giữa các chip trên cùng một bo mạch.
+- Giao tiếp 1 Master với nhiều Slave.
+- Tốc độ truyền khoảng vài Mb/s.
+- Các dòng vi điều khiển thường được tích hợp module giao tiếp SPI dùng để giao tiếp truyền dữ liệu với các vi điều khiển khác, hoặc giao tiếp với các ngoại vi bên ngoài như cảm biến, EEPROM, ADC, LCD, SD Card,…
+
+![Connect with orther](https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/SPI_single_slave.svg/800px-SPI_single_slave.svg.png)
 
 ![Connect with orther](https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/SPI_three_slaves.svg/350px-SPI_three_slaves.svg.png)
 - ***SCLK (Serial Clock):*** Xung clock phát ra từ master
@@ -874,5 +879,44 @@ Modifiers
 - ***MISO (Master In Slave Out):*** Truyền data từ `slave` đến `master`. Chân `MISO` ở `master` sẽ kết nối đến chân `MISO` ở `slave`.
 - ***CS/SS (Chip/Slave Select):*** Chân CS được master sử dụng để lựa chọn slave cần giao tiếp. Master chỉnh chân SS xuống mức 0 để chọn slave truyền data.
 
+![Connect with orther](https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/SPI_8-bit_circular_transfer.svg/500px-SPI_8-bit_circular_transfer.svg.png)
+- Mỗi chip Master hay Slave sẽ có một thanh ghi dữ liệu 8 bit chứa dữ liệu cần gửi hoặc dữ liệu nhận.
+- Mỗi xung nhịp mà Master tạo ra trên chân SCLK thì 1 bit trong thanh ghi dữ liệu của Master được truyền qua Slave và đồng thời 1 bit trong thanh ghi dữ liệu của Slave cũng truyền qua cho Master.
+
+![Connect with orther](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/SPI_timing_diagram2.svg/400px-SPI_timing_diagram2.svg.png)
+- Có 4 chế độ hoạt động:
+  	| Mode | CPOL | CPHA |
+  	|:---:|:---:|:---:|
+  	|0|0|0|
+  	|1|0|1|
+  	|2|1|0|
+  	|3|1|1|
+- CPOL = 0: Xung của SCK bắt đầu 1 chu kì là xung cạnh lên.
+- CPOL = 1: Xung của SCK bắt đầu 1 chu kì là xung cạnh xuống.
+- CPHA = 0: Bit dữ liệu đầu ra sẽ rơi vào cạnh xung đầu tiên của chu kì.
+- CPHA = 1: Bit dữ liệu đầu ra sẽ rơi vào cạnh xung thứ hai của chu kì.
+
 </details>
+
+<details>
+  <summary><h4>I2C protocol</h4></summary>
+
+- I2C (Inter-Integrated Circuit) là một giao thức truyền thông nối tiếp đồng bộ. Nên các bit dữ liệu truyền đi được đồng bộ hóa với xung nhịp do Master điều khiển.
+- Hỗ trợ nhiều Master và Slave trên một đường truyền
+
+![Connect with orther](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/I2C.svg/220px-I2C.svg.png)
+I2C chỉ sử dụng hai dây để truyền dữ liệu giữa các thiết bị:
+- SDA (Serial Data) - đường truyền cho master và slave để gửi và nhận dữ liệu.
+- SCL (Serial Clock) - đường mang tín hiệu xung nhịp.
+
+***Cách hoạt động:***
+
+![Connect with orther](https://www.circuitbasics.com/wp-content/uploads/2016/01/Introduction-to-I2C-Message-Frame-and-Bit-2.png)
+
+- Dữ liệu được truyền trong các Message, mỗi Message có một khung địa chỉ nhị phân chứa địa chỉ của Slave và một hoặc nhiều khung dữ liệu chứa dữ liệu đang được truyền.
+- Trong mỗi thông điệp bao gồm điều kiện Start và Stop, các bit Read/Write và các bit ACK/NACK giữa mỗi khung dữ liệu.
+- 
+
+</details>
+
 </details>
