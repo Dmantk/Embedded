@@ -919,32 +919,89 @@ I2C chỉ sử dụng hai dây để truyền dữ liệu giữa các thiết b�
 ![Connect with orther](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTry4sV-ui_OqN3z3ioNBQlq25u2RSJ0i1ucA&usqp=CAU)
 
 - ***Điều kiện khởi động (1 bit):*** Chân `SDA` chuyển từ mức cao xuống mức thấp trước khi `SDL` chuyển từ cao xuống thấp.
-- ***Khung địa chỉ (7 hoặc 10 bit):*** Là một chuỗi 7 hoặc 10 bit duy nhất cho mỗi `Slave` để xác định `Slave` mà `Master` muốn liên lạc.
+- ***Khung địa chỉ (7 hoặc 10 bit):*** Là một chuỗi 7 hoặc 10 bit duy nhất cho mỗi `Slave` để xác định `Slave` mà `Master` muốn liên lạc và bit `Read/Write` cũng được gửi cùng ngay sau `khung địa chỉ`.
   	- `Master` sẽ gửi địa chỉ cho tất cả `Slave`, và những `Slave` sẽ so sánh địa chỉ đó với địa chỉ của nó.
   	- Nếu phù hợp nó sẽ gửi lại một bit `ACK` mức thấp trở lại cho `Master`, và nếu không khớp thì không làm gì cả và `SDA` giữa hai thiết bị đó vẫn ở mức cao
 - ***Read/Write (1 bit):*** Sẽ cho `Slave` biết là `Master` muốn ghi dữ liệu vào nó hay nhận dữ liệu từ nó.
 	- Nếu `Write` thì `0`, còn `Read` thì `1`.
-- ***Data Frame (8 bit):*** Sau khi Master phát hiện bit ACK gửi từ Slave, thì khung dữ kiệu bắt đầu gửi.
+- ***Data Frame (8 bit):*** Sau khi Master phát hiện bit `ACK` gửi từ `Slave`, thì `khung dữ liệu` bắt đầu gửi.
 	- Bit MSB được gửi trước.
- 	- Theo sau mỗi khung dữ liệu sẽ có 1 bit ACK/NACK để xác nhận khung đã được nhận thành công(bit 0 chân SDA).
-  	- Bit ACK phải được nhận bởi Master hoặc Slave (tùy vào thiết bị gửi dữ liệu) trước khi khung dữ liệu tiếp theo được gửi.
-- ***Điều kiện dừng (1 bit):*** Sau khi tất cả khung dữ liệu đã được gửi đi, thì Master có thể gửi điều kiện dừng bằng cách:
-	- Chuyển SCL từ mức thấp lên mức cao trước khi chuyển SDA từ thấp lên cao.
+ 	- Theo sau mỗi khung dữ liệu sẽ có 1 bit `ACK/NACK` để xác nhận khung đã được nhận thành công(bit 0 chân `SDA`).
+  	- Bit `ACK` phải được nhận bởi `Master` hoặc `Slave` (tùy vào thiết bị gửi dữ liệu) trước khi khung dữ liệu tiếp theo được gửi.
+- ***Điều kiện dừng (1 bit):*** Sau khi tất cả khung dữ liệu đã được gửi đi, thì `Master` có thể gửi điều kiện dừng bằng cách:
+	- Chuyển `SCL` từ mức thấp lên mức cao trước khi chuyển `SDA` từ thấp lên cao.
 
 ***Ưu, nhược điểm của chuẩn giao tiếp I2C***
+
 - **Ưu điểm:**
-  	- Chỉ sử dụng hai dây
-    	- Hỗ trợ nhiều master và nhiều slave
-    	- Bit ACK / NACK xác nhận rằng mỗi khung dữ liệu hay địa chỉ được gửi (hoặc nhận) thành công
-    	- Phần cứng ít phức tạp hơn với giao tiếp UART
-    	- Giao thức nổi tiếng và được sử dụng rộng rãi
+  - Chỉ sử dụng hai dây
+  - Hỗ trợ nhiều `master` và nhiều `slave`
+  - Bit `ACK / NACK` xác nhận rằng mỗi khung dữ liệu hay địa chỉ được gửi (hoặc nhận) thành công
+  - Phần cứng ít phức tạp hơn với giao tiếp `UART`
+  - Giao thức nổi tiếng và được sử dụng rộng rãi
+
 - **Nhược điểm:**
-    	- Tốc độ truyền dữ liệu giao tiếp I2C chậm hơn so với giao tiếp SPI
-  	- Kích thước của khung dữ liệu được giới hạn ở 8 bit
-    	- Cần phần cứng phức tạp hơn để triển khai so với giao tiếp SPI
-
-
+  - Tốc độ truyền dữ liệu giao tiếp `I2C` chậm hơn so với giao tiếp `SPI`
+  - Kích thước của khung dữ liệu được giới hạn ở `8 bit`
+  - Cần phần cứng phức tạp hơn để triển khai so với giao tiếp `SPI`
 
 </details>
 
+<details>
+  <summary><h4>UART protocol</h4></summary>
+
+- `UART` (Universal Asynchronous Receiver / Transmitter) hoàn toàn khác biệt với chuẩn giao tiếp `SPI` hoặc `I2C`, những chuẩn này chỉ đơn tuần là giao tiếp phần mềm.
+- Mục đích chính của `UART` là truyền và nhận dữ liệu nối tiếp không đồng bộ vì không có chân `Clock`. Nên tốc độ truyền `Baudrate` rất quan trọng trong giao thức này.
+- Chuẩn giao tiếp `UART` sử dụng 2 dây để truyền và nhận dữ liệu giữa các thiết bị:
+ - `TX (Transmiter)` – Dây truyền dữ liệu
+ - `RX (Receiver)` – Dây nhận dữ liệu
+- Giao tiếp giữa 1 `Master` và 1 `Slave`.
+- Ngoài dữ liệu ra trong 1 lần truyền còn nhét thêm các Start bit, Stop bit, Parity bit. Các bit thêm vào này giúp cho Slave nhận biết, kiểm tra và nhận được đúng tín hiệu.
+
+***Cách truyền nhận dữ liệu:***
+![Connect with orther](https://kysungheo.com/wp-content/uploads/2023/03/3-300x129.png)
+- UART sẽ truyền và nhận dữ liệu từ một Data Bus
+- Data Bus được sử dụng để gửi dữ liệu đến UART bởi một thiết bị khác như vi điều khiển.
+- Dữ liệu được gửi từ Data Bus sang UART ở dạng song song.
+- Sau khi UART nhận được dữ liệu từ Data Bus, nó sẽ thêm một bit Start, một bit Parity và một bit Stop.
+- Tạo ra gói dữ liệu và truyền đi nối tiếp từng bit qua chân TX.
+- Bên nhận sẽ chuyển đổi gói dữ liệu đó sang dạng song song và lược bỏ các bit Start, Parity, Stop và chuyển qua Data Bus.
+
+![Connect with orther](https://www.circuitbasics.com/wp-content/uploads/2016/01/Introduction-to-UART-Packet-Frame-and-Bits-2.png)
+
+- ***Start bit:*** Để bắt đầu truyền dữ liệu, UART truyền sẽ kéo đường truyền từ mức cao xuống mức thấp trong một chu kỳ đồng hồ. Khi UART bên nhận phát hiện sự chuyển đổi điện áp cao xuống thấp, nó bắt đầu đọc các bit trong khung dữ liệu ở tần số của tốc độ truyền (Baud rate).
+- ***Data Frame:***
+  - Nó có thể dài từ 5 bit đến 8 bit nếu sử dụng bit Parity (bit chẵn lẻ).
+  - Nếu không sử dụng bit Parity, khung dữ liệu có thể dài 9 bit.
+  - Trong hầu hết các trường hợp, dữ liệu được gửi với bit LSB (bit có trọng số thấp nhất) trước tiên.
+- ***Parity Bit*** bit Parity là một cách để UART bên nhận kiểm tra dữ liệu đã thay đổi trong quá trình truyền hay không. Bit có thể bị thay đổi bởi tốc độ truyền không khớp hoặc truyền dữ liệu khoảng cách xa,… Sau khi UART bên nhận đọc khung dữ liệu, nó sẽ đếm số bit có giá trị là 1 và kiểm tra xem tổng số là số chẵn hay lẻ.
+  - Nếu bit Parity là 0 (chẵn), thì tổng các bit 1 trong khung dữ liệu phải là một số chẵn.
+  - Nếu bit Parity là 1 (lẻ), thì tổng các bit 1 trong khung dữ liệu sẽ là một số lẻ. Do đó qua kiểm tra sẽ biết được quá trình truyền dữ liệu có chính xác.
+- ***Stop Bit:*** Để báo hiệu sự kết thúc của gói dữ liệu, UART gửi sẽ điều khiển đường truyền dữ liệu từ điện áp thấp đến điện áp cao trong ít nhất hai khoảng thời gian bit.
+
+***Ưu, nhược điểm của chuẩn giao tiếp UART***
+
+Không có giao thức truyền thông nào là hoàn hảo, nhưng UART thực hiện khá tốt công việc của chúng. Dưới đây là một số ưu và nhược điểm của chuẩn giao tiếp UART. Mong rằng chúng có thể hỗ trợ cho dự án của bạn.
+- Ưu điểm:
+  - Chỉ sử dụng hai dây
+  - Không cần tín hiệu đồng hồ
+  - Có một bit chẵn lẻ để cho phép kiểm tra lỗi
+  - Cấu trúc của gói dữ liệu có thể được thay đổi
+  - Phương pháp được ghi chép rõ ràng và được sử dụng rộng rãi
+
+- Nhược điểm:
+  - Kích thước của khung dữ liệu được giới hạn tối đa là 9 bit
+  - Không hỗ trợ nhiều hệ thống phụ hoặc nhiều hệ thống chính
+  - Tốc độ truyền của mỗi UART phải nằm trong khoảng 10% của nhau
+
+</details>
+
+<details>
+  <summary><h4>CAN protocol</h4></summary>
+
+
+ 
+</details>
+
+</details>
 </details>
