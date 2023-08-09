@@ -913,9 +913,37 @@ I2C chỉ sử dụng hai dây để truyền dữ liệu giữa các thiết b�
 
 ![Connect with orther](https://www.circuitbasics.com/wp-content/uploads/2016/01/Introduction-to-I2C-Message-Frame-and-Bit-2.png)
 
-- Dữ liệu được truyền trong các Message, mỗi Message có một khung địa chỉ nhị phân chứa địa chỉ của Slave và một hoặc nhiều khung dữ liệu chứa dữ liệu đang được truyền.
-- Trong mỗi thông điệp bao gồm điều kiện Start và Stop, các bit Read/Write và các bit ACK/NACK giữa mỗi khung dữ liệu.
-- 
+- Dữ liệu được truyền trong các `Message`, mỗi `Message` có một `khung địa chỉ` nhị phân chứa địa chỉ của `Slave` và một hoặc nhiều `khung dữ liệu` chứa dữ liệu đang được truyền.
+- Trong mỗi thông điệp bao gồm điều kiện `Start` và `Stop`, các bit `Read/Write` và các bit `ACK/NACK` giữa mỗi `khung dữ liệu`.
+
+![Connect with orther](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTry4sV-ui_OqN3z3ioNBQlq25u2RSJ0i1ucA&usqp=CAU)
+
+- ***Điều kiện khởi động (1 bit):*** Chân `SDA` chuyển từ mức cao xuống mức thấp trước khi `SDL` chuyển từ cao xuống thấp.
+- ***Khung địa chỉ (7 hoặc 10 bit):*** Là một chuỗi 7 hoặc 10 bit duy nhất cho mỗi `Slave` để xác định `Slave` mà `Master` muốn liên lạc.
+  	- `Master` sẽ gửi địa chỉ cho tất cả `Slave`, và những `Slave` sẽ so sánh địa chỉ đó với địa chỉ của nó.
+  	- Nếu phù hợp nó sẽ gửi lại một bit `ACK` mức thấp trở lại cho `Master`, và nếu không khớp thì không làm gì cả và `SDA` giữa hai thiết bị đó vẫn ở mức cao
+- ***Read/Write (1 bit):*** Sẽ cho `Slave` biết là `Master` muốn ghi dữ liệu vào nó hay nhận dữ liệu từ nó.
+	- Nếu `Write` thì `0`, còn `Read` thì `1`.
+- ***Data Frame (8 bit):*** Sau khi Master phát hiện bit ACK gửi từ Slave, thì khung dữ kiệu bắt đầu gửi.
+	- Bit MSB được gửi trước.
+ 	- Theo sau mỗi khung dữ liệu sẽ có 1 bit ACK/NACK để xác nhận khung đã được nhận thành công(bit 0 chân SDA).
+  	- Bit ACK phải được nhận bởi Master hoặc Slave (tùy vào thiết bị gửi dữ liệu) trước khi khung dữ liệu tiếp theo được gửi.
+- ***Điều kiện dừng (1 bit):*** Sau khi tất cả khung dữ liệu đã được gửi đi, thì Master có thể gửi điều kiện dừng bằng cách:
+	- Chuyển SCL từ mức thấp lên mức cao trước khi chuyển SDA từ thấp lên cao.
+
+***Ưu, nhược điểm của chuẩn giao tiếp I2C***
+- **Ưu điểm:**
+  	- Chỉ sử dụng hai dây
+    	- Hỗ trợ nhiều master và nhiều slave
+    	- Bit ACK / NACK xác nhận rằng mỗi khung dữ liệu hay địa chỉ được gửi (hoặc nhận) thành công
+    	- Phần cứng ít phức tạp hơn với giao tiếp UART
+    	- Giao thức nổi tiếng và được sử dụng rộng rãi
+- **Nhược điểm:**
+    	- Tốc độ truyền dữ liệu giao tiếp I2C chậm hơn so với giao tiếp SPI
+  	- Kích thước của khung dữ liệu được giới hạn ở 8 bit
+    	- Cần phần cứng phức tạp hơn để triển khai so với giao tiếp SPI
+
+
 
 </details>
 
