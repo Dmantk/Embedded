@@ -896,6 +896,18 @@ Modifiers
 - CPHA = 0: Bit dữ liệu đầu ra sẽ rơi vào cạnh xung đầu tiên của chu kì.
 - CPHA = 1: Bit dữ liệu đầu ra sẽ rơi vào cạnh xung thứ hai của chu kì.
 
+***Ưu, nhược điểm của chuẩn giao tiếp SPI.***
+- Ưu điểm:
+  - Không có Start bit và Stop bit như trong giao tiếp I2C và giao tiếp UART. Vì vậy dữ liệu có thể được truyền liên tục mà không bị gián đoạn
+  - Không có hệ thống định địa chỉ slave phức tạp như I2C
+  - Tốc độ truyền dữ liệu cao hơn I2C (nhanh gần gấp đôi)
+  - Các dòng MISO và MOSI riêng biệt, vì vậy dữ liệu có thể được gửi và nhận cùng một lúc
+- Nhược điểm:
+  - Sử dụng bốn dây (I2C và UART sử dụng hai dây).
+  - Không xác nhận rằng dữ liệu đã được nhận thành công.
+  - Không có hình thức kiểm tra lỗi như bit chẵn lẻ (Parity bit) như trong UART.
+  - Chỉ cho phép một master duy nhất.
+
 </details>
 
 <details>
@@ -991,16 +1003,16 @@ Không có giao thức truyền thông nào là hoàn hảo, nhưng UART thực 
 
 - Nhược điểm:
   - Kích thước của khung dữ liệu được giới hạn tối đa là 9 bit
-  - Không hỗ trợ nhiều hệ thống phụ hoặc nhiều hệ thống chính
+  - Không hỗ trợ nhiều hệ thống phụ dây hoặc nhiều hệ thống chính
   - Tốc độ truyền của mỗi UART phải nằm trong khoảng 10% của nhau
 
 </details>
 
 <details>
   <summary><h4>CAN protocol</h4></summary>
-
-
- 
+- Controller Area Network (CAN Bus) là giao thức truyền thông nối tiếp, tốc độ cao. Gồm có hai dây (CAN-High và CAN-Low).
+  - 1 dây là CAN high: điện áp dao động từ 2.5 – 3.75 V
+  - 1 dây là CAN low: điện áp dao động từ 1.25 – 2.5 V
 </details>
 
 </details>
