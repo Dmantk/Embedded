@@ -1010,9 +1010,11 @@ Không có giao thức truyền thông nào là hoàn hảo, nhưng UART thực 
 
 <details>
   <summary><h4>CAN protocol</h4></summary>
+
 - Controller Area Network (CAN Bus) là giao thức truyền thông nối tiếp, tốc độ cao. Gồm có hai dây (CAN-High và CAN-Low).
   - 1 dây là CAN high: điện áp dao động từ 2.5 – 3.75 V
   - 1 dây là CAN low: điện áp dao động từ 1.25 – 2.5 V
+
 </details>
 
 </details>
