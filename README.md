@@ -917,9 +917,10 @@ Modifiers
 - Hỗ trợ nhiều Master và Slave trên một đường truyền
 
 ![Connect with orther](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/I2C.svg/220px-I2C.svg.png)
-I2C chỉ sử dụng hai dây để truyền dữ liệu giữa các thiết bị:
-- SDA (Serial Data) - đường truyền cho master và slave để gửi và nhận dữ liệu.
-- SCL (Serial Clock) - đường mang tín hiệu xung nhịp.
+
+- I2C chỉ sử dụng hai dây để truyền dữ liệu giữa các thiết bị:
+  - SDA (Serial Data) - đường truyền cho master và slave để gửi và nhận dữ liệu.
+  - SCL (Serial Clock) - đường mang tín hiệu xung nhịp.
 
 ***Cách hoạt động:***
 
