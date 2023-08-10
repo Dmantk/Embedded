@@ -972,7 +972,9 @@ Modifiers
 - Ngoài dữ liệu ra trong 1 lần truyền còn nhét thêm các Start bit, Stop bit, Parity bit. Các bit thêm vào này giúp cho Slave nhận biết, kiểm tra và nhận được đúng tín hiệu.
 
 ***Cách truyền nhận dữ liệu:***
+
 ![Connect with orther](https://kysungheo.com/wp-content/uploads/2023/03/3-300x129.png)
+
 - UART sẽ truyền và nhận dữ liệu từ một Data Bus
 - Data Bus được sử dụng để gửi dữ liệu đến UART bởi một thiết bị khác như vi điều khiển.
 - Dữ liệu được gửi từ Data Bus sang UART ở dạng song song.
