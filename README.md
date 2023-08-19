@@ -896,7 +896,7 @@ Modifiers
 - CPHA = 0: Bit dữ liệu đầu ra sẽ rơi vào cạnh xung đầu tiên của chu kì.
 - CPHA = 1: Bit dữ liệu đầu ra sẽ rơi vào cạnh xung thứ hai của chu kì.
 
-***Ưu, nhược điểm của chuẩn giao tiếp SPI.***
+### Ưu, nhược điểm của chuẩn giao tiếp SPI.
 - Ưu điểm:
   - Không có Start bit và Stop bit như trong giao tiếp I2C và giao tiếp UART. Vì vậy dữ liệu có thể được truyền liên tục mà không bị gián đoạn
   - Không có hệ thống định địa chỉ slave phức tạp như I2C
@@ -922,7 +922,7 @@ Modifiers
   - SDA (Serial Data) - đường truyền cho master và slave để gửi và nhận dữ liệu.
   - SCL (Serial Clock) - đường mang tín hiệu xung nhịp.
 
-***Cách hoạt động:***
+### Cách hoạt động:
 
 ![Connect with orther](https://www.circuitbasics.com/wp-content/uploads/2016/01/Introduction-to-I2C-Message-Frame-and-Bit-2.png)
 
@@ -944,7 +944,7 @@ Modifiers
 - ***Điều kiện dừng (1 bit):*** Sau khi tất cả khung dữ liệu đã được gửi đi, thì `Master` có thể gửi điều kiện dừng bằng cách:
 	- Chuyển `SCL` từ mức thấp lên mức cao trước khi chuyển `SDA` từ thấp lên cao.
 
-***Ưu, nhược điểm của chuẩn giao tiếp I2C***
+### Ưu, nhược điểm của chuẩn giao tiếp I2C
 
 - **Ưu điểm:**
   - Chỉ sử dụng hai dây
@@ -971,7 +971,7 @@ Modifiers
 - Giao tiếp giữa 1 `Master` và 1 `Slave`.
 - Ngoài dữ liệu ra trong 1 lần truyền còn nhét thêm các Start bit, Stop bit, Parity bit. Các bit thêm vào này giúp cho Slave nhận biết, kiểm tra và nhận được đúng tín hiệu.
 
-***Cách truyền nhận dữ liệu:***
+### Cách truyền nhận dữ liệu:
 
 ![Connect with orther](https://kysungheo.com/wp-content/uploads/2023/03/3-300x129.png)
 
@@ -994,7 +994,7 @@ Modifiers
   - Nếu bit Parity là 1 (lẻ), thì tổng các bit 1 trong khung dữ liệu sẽ là một số lẻ. Do đó qua kiểm tra sẽ biết được quá trình truyền dữ liệu có chính xác.
 - ***Stop Bit:*** Để báo hiệu sự kết thúc của gói dữ liệu, UART gửi sẽ điều khiển đường truyền dữ liệu từ điện áp thấp đến điện áp cao trong ít nhất hai khoảng thời gian bit.
 
-***Ưu, nhược điểm của chuẩn giao tiếp UART***
+### Ưu, nhược điểm của chuẩn giao tiếp UART
 
 Không có giao thức truyền thông nào là hoàn hảo, nhưng UART thực hiện khá tốt công việc của chúng. Dưới đây là một số ưu và nhược điểm của chuẩn giao tiếp UART. Mong rằng chúng có thể hỗ trợ cho dự án của bạn.
 - Ưu điểm:
@@ -1013,7 +1013,8 @@ Không có giao thức truyền thông nào là hoàn hảo, nhưng UART thực 
 
 <details>
   <summary><h4>CAN protocol</h4></summary>
-
+	
+### CAN là gì?
 - Controller Area Network (CAN Bus) là giao thức truyền thông nối tiếp, tốc độ cao. Gồm có hai dây (CAN-High và CAN-Low).
   - 1 dây là CAN high: điện áp dao động từ 2.5 – 3.75 V
   - 1 dây là CAN low: điện áp dao động từ 1.25 – 2.5 V
