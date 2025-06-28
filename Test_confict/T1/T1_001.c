@@ -1,2 +1,2 @@
 This is T1_001 file
-sao lai mat thong tin o day
+This file of T2 folder
