@@ -1,1 +1,0 @@
-This is T1_003 file
